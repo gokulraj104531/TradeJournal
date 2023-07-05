@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TradingJournal\\TradingJournal\\TradingJournal\\TradingJournal.csproj": {}
+    "D:\\TradingJournal\\TradeJournal\\TradingJournal\\TradingJournal\\TradingJournal.csproj": {}
   },
   "projects": {
-    "D:\\TradingJournal\\TradingJournal\\TradingJournal\\TradingJournal.csproj": {
+    "D:\\TradingJournal\\TradeJournal\\TradingJournal\\TradingJournal\\TradingJournal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TradingJournal\\TradingJournal\\TradingJournal\\TradingJournal.csproj",
+        "projectUniqueName": "D:\\TradingJournal\\TradeJournal\\TradingJournal\\TradingJournal\\TradingJournal.csproj",
         "projectName": "TradingJournal",
-        "projectPath": "D:\\TradingJournal\\TradingJournal\\TradingJournal\\TradingJournal.csproj",
+        "projectPath": "D:\\TradingJournal\\TradeJournal\\TradingJournal\\TradingJournal\\TradingJournal.csproj",
         "packagesPath": "C:\\Users\\gokulraj.raja\\.nuget\\packages\\",
-        "outputPath": "D:\\TradingJournal\\TradingJournal\\TradingJournal\\obj\\",
+        "outputPath": "D:\\TradingJournal\\TradeJournal\\TradingJournal\\TradingJournal\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

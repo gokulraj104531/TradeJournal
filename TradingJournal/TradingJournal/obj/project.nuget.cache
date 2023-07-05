@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "a3TEcVEv1pdKWcBtMsaebMgBEygL2/UlMDyuhEzZ+KDiLdkT1pROI654Jg5zZMNChp5X9FyDrIprvEBiHoLnhw==",
+  "dgSpecHash": "GDVubGW6r7f+mtDb3BhxmC+C+ozQOr5oPyabint1T5HF5aWsbvJJew5tL9jJzfsSH0CIfuej4rQaIo8fdebeWg==",
   "success": true,
-  "projectFilePath": "D:\\TradingJournal\\TradingJournal\\TradingJournal\\TradingJournal.csproj",
+  "projectFilePath": "D:\\TradingJournal\\TradeJournal\\TradingJournal\\TradingJournal\\TradingJournal.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gokulraj.raja\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\gokulraj.raja\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

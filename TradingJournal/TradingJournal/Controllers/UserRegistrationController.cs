@@ -18,6 +18,21 @@ namespace TradingJournal.Controllers
             this._services = services;
         }
 
+        [HttpPost]
+        [Route("Login")]
+        public IActionResult Login(string User,string Pass)
+        {
+            try
+            {
+                return StatusCode(200, _services.LoginServices(User, Pass));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         [HttpPost("Authenticate")]
         public IActionResult Authenticate(LoginModel login)
         {
@@ -48,9 +63,11 @@ namespace TradingJournal.Controllers
             {
                 return _services.GetServices();
             }
-            catch (Exception)
+            catch (Exception )
             {
                 throw;
+                //return NoContent();
+
             }
         }
 
@@ -65,7 +82,7 @@ namespace TradingJournal.Controllers
             }
             catch (Exception)
             {
-                throw;
+                return NoContent();
             }
         }
 

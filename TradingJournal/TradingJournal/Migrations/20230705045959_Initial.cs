@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TradingJournal.Migrations
 {
-    public partial class Files : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,9 +13,7 @@ namespace TradingJournal.Migrations
                 name: "userRegistrations",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -23,7 +21,7 @@ namespace TradingJournal.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_userRegistrations", x => x.UserId);
+                    table.PrimaryKey("PK_userRegistrations", x => x.UserName);
                 });
 
             migrationBuilder.CreateTable(
@@ -32,7 +30,7 @@ namespace TradingJournal.Migrations
                 {
                     journalId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     StockName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     OrderType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
@@ -47,17 +45,16 @@ namespace TradingJournal.Migrations
                 {
                     table.PrimaryKey("PK_journals", x => x.journalId);
                     table.ForeignKey(
-                        name: "FK_journals_userRegistrations_UserId",
-                        column: x => x.UserId,
+                        name: "FK_journals_userRegistrations_UserName",
+                        column: x => x.UserName,
                         principalTable: "userRegistrations",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "UserName");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_journals_UserId",
+                name: "IX_journals_UserName",
                 table: "journals",
-                column: "UserId");
+                column: "UserName");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -1,4 +1,5 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using TradingJournal.Data;
 using TradingJournal.Models;
 
@@ -17,6 +18,7 @@ namespace TradingJournal.Repoistories
         {
             try
             {
+                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
                 _dbcontext.userRegistrations.Add(user);
                 _dbcontext.SaveChanges();
             }
@@ -66,6 +68,30 @@ namespace TradingJournal.Repoistories
                 throw;
             }    
         }
+
+
+        public UserRegistration Login(string username, string password)
+        {
+            try
+            {
+                UserRegistration userRegistration = _dbcontext.userRegistrations.Find(username);
+                if(userRegistration!= null)
+                {
+                    if (BCrypt.Net.BCrypt.Verify(password, userRegistration.Password))
+                    {
+                        return userRegistration;
+                    }
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+
 
         public UserRegistration GetUserByName(LoginModel loginModel)
         {

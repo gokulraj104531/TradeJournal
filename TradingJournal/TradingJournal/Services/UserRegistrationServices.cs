@@ -78,6 +78,23 @@ namespace TradingJournal.Services
             }
         }
 
+
+        public LoginModel LoginServices(string username,string password)
+        {
+            try
+            {
+                var login=userRegistrationRepoistories.Login(username,password);
+                LoginModel model=_mapper.Map<LoginModel>(login);
+                return model;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         //public UserRegistration GetUserName(string userName,string Password)
         //{
         //    try

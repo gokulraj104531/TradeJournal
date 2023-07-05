@@ -12,8 +12,8 @@ using TradingJournal.Data;
 namespace TradingJournal.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230703095854_Files")]
-    partial class Files
+    [Migration("20230705045959_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -59,23 +59,20 @@ namespace TradingJournal.Migrations
                     b.Property<string>("StockName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("journalId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserName");
 
                     b.ToTable("journals");
                 });
 
             modelBuilder.Entity("TradingJournal.Models.UserRegistration", b =>
                 {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -93,11 +90,7 @@ namespace TradingJournal.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId");
+                    b.HasKey("UserName");
 
                     b.ToTable("userRegistrations");
                 });
@@ -106,9 +99,7 @@ namespace TradingJournal.Migrations
                 {
                     b.HasOne("TradingJournal.Models.UserRegistration", "UserRegistration")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserName");
 
                     b.Navigation("UserRegistration");
                 });

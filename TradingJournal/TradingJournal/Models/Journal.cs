@@ -9,9 +9,9 @@ namespace TradingJournal.Models
         public int journalId { get; set; }
 
         [ForeignKey("UserRegistration")]
-        public  int UserId { get; set; }
+        public  string? UserName { get; set; }
 
-        public virtual UserRegistration UserRegistration { get; set; }
+        public virtual UserRegistration? UserRegistration { get; set; }
 
         public string? StockName { get; set; }
 
