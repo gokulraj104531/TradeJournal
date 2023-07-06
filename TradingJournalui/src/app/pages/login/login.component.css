@@ -1,0 +1,103 @@
+.layout {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+
+}
+
+.left {
+    height: 100vh;
+    width: 50%;
+    left: 0;
+    display: block;
+    background-color: aquamarine;
+}
+
+.right {
+    height: 100vh;
+    width: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-image: url(src\assets\eiffeltower.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-layout {
+    display: block;
+    align-items: center;
+    position: relative;
+    top: 30px;
+    left: 65px;
+}
+
+.form-container {
+    height: 500px;
+    width: 450px;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    position: absolute;
+    top: 100px;
+    font-size: medium;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.username {
+    margin-bottom: 30px;
+}
+
+.password {
+    margin-bottom: 20px;
+}
+
+.signup-link {
+    position: absolute;
+    bottom: 130px;
+    font-size: small;
+}
+
+.form-button {
+    height: 40px;
+    width: 100px;
+    background-color: black;
+    color: azure;
+    border-radius: 10px;
+}
+
+input[type=text] {
+    width: 250px;
+    height: 30px;
+    font-size: small;
+    padding-left: 9px;
+    border: 0 0 1px 0 black;
+    border-radius: 10px;
+}
+
+input[type=password] {
+    width: 250px;
+    height: 30px;
+    font-size: small;
+    padding-left: 9px;
+    border: 0 0 1px 0 black;
+    border-radius: 10px;
+}
+
+input,
+textarea {
+    font-family: inherit;
+}
