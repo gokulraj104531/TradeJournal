@@ -3,8 +3,11 @@
     width: 100%;
     position: relative;
     display: inline-block;
-
 }
+.cont{
+    padding: 0;
+}
+
 
 .left {
     height: 100%;
