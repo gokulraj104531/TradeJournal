@@ -18,13 +18,13 @@ namespace TradingJournal.Controllers
             this._services = services;
         }
 
-        [HttpPost]
-        [Route("Login")]
-        public IActionResult Login(string User,string Pass)
+        [HttpGet]
+        [Route("Login/{User}/{Pass}")]
+        public LoginModel Login(string User,string Pass)
         {
             try
             {
-                return StatusCode(200, _services.LoginServices(User, Pass));
+                return _services.LoginServices(User, Pass);
             }
             catch (Exception)
             {

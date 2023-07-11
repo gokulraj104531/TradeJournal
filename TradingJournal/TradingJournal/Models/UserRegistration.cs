@@ -4,9 +4,8 @@ namespace TradingJournal.Models
 {
     public class UserRegistration
     {
-        //[Key]
-        //public int UserId { get; set; }
-
+        
+       
         [Key]
         [Required]
         public string? UserName { get; set; }
