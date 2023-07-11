@@ -11,6 +11,7 @@ import { ViewjournalComponent } from './components/viewjournal/viewjournal.compo
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './components/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     AddjournalComponent,
     ViewjournalComponent,
     DashboardComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
