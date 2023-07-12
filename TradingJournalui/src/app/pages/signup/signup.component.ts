@@ -7,36 +7,39 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
-export class SignupComponent  {
- 
-
+export class SignupComponent {
   Userarray: UserRegisteration[] = [];
   Userformgroup: FormGroup;
 
-  constructor(private userregservice: HttpservicesService, private fb: FormBuilder,private router:Router) {
+  constructor(
+    private userregservice: HttpservicesService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.Userformgroup = this.fb.group({
-      UserName: [""],
-      Name: [""],
-      Email: [""],
-      Password: [""],
-      PhoneNumber: [""]
-    })
-  }
-  
-  onSubmit() {
-    this.userregservice.AddUser(this.Userformgroup.value).subscribe(response => {
-      console.log(response);
-      this.Userformgroup.setValue({
-        UserName: "",
-        Name: "",
-        Email: "",
-        Password: "",
-        PhoneNumber: ""
-      })
-      this.router.navigateByUrl('/login');
+      UserName: [''],
+      Name: [''],
+      Email: [''],
+      Password: [''],
+      PhoneNumber: [''],
     });
- 
+  }
+
+  onSubmit() {
+    this.userregservice
+      .AddUser(this.Userformgroup.value)
+      .subscribe((response) => {
+        console.log(response);
+        this.Userformgroup.setValue({
+          UserName: '',
+          Name: '',
+          Email: '',
+          Password: '',
+          PhoneNumber: '',
+        });
+        this.router.navigateByUrl('/login');
+      });
   }
 }

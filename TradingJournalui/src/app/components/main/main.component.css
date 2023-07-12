@@ -1,5 +1,5 @@
 .layout {
-    height: 108vh;
+    height: 115vh;
     width: 77%;
     position: absolute;
     top: 15%;
@@ -11,7 +11,7 @@
 
 .heading {
     margin-top: 25px;
-    margin-left: 25px;
+    margin-left: 35px;
 }
 
 .square {
@@ -23,6 +23,7 @@
     right: 25px;
     display: flex;
     justify-content: space-evenly;
+
 }
 
 .profit-col {
@@ -47,5 +48,30 @@
     display: flex;
     justify-content: center;
     margin-top: 10px;
+}
+
+.chart{
+    height: 350px;
+    width: 97%;
    
+    position: absolute;
+    bottom: 30px;
+    right: 25px;
+    display: flex;
+    justify-content:space-around
+    
+}
+
+.chart-head{
+    margin-left: 25px;
+    margin-top: 15px;
+}
+.line-chart{
+    background-color: antiquewhite;
+    height: 270px;
+}
+
+.pie-chart{
+    background-color:darkcyan;
+    height: 270px;
 }

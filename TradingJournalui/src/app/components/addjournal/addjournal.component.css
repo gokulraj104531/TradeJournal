@@ -1,0 +1,90 @@
+.layout {
+    height: 115vh;
+    width: 77%;
+    position: absolute;
+    top: 15%;
+    right: 15px;
+    background-color: aliceblue;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+.heading {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+
+.form{
+    height:475px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+input[type=number] {
+    width: 270px;
+    height: 30px;
+    font-size: small;
+    padding-left: 9px;
+    border: 0 0 1px 0 black;
+    border-radius: 10px;
+}
+.select {
+    width: 270px;
+    height: 30px;
+    font-size: small;
+    padding-left: 9px;
+    border: 2px black solid;
+    border-radius: 10px;
+    opacity: 0.9;
+
+}
+input[type=text] {
+    width: 270px;
+    height: 30px;
+    font-size: small;
+    padding-left: 9px;
+    border: 0 0 1px 0 black;
+    border-radius: 10px;
+}
+
+input[type=datetime-local] {
+    width: 270px;
+    height: 30px;
+    font-size: small;
+    padding-left: 9px;
+    border: 0 0 1px 0 black;
+    border-radius: 10px;
+}
+
+
+input[type=number] {
+    width: 270px;
+    height: 30px;
+    font-size: small;
+    padding-left: 9px;
+    border: 0 0 1px 0 black;
+    border-radius: 10px;
+}
+
+input,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
+textarea{
+    width: 565px;
+    height: 100px;
+    font-size: small;
+    padding-left: 9px;
+    border: 2px  black solid;
+   
+    border-radius: 10px;
+}
+
+.button{
+    padding-top: 0;
+}

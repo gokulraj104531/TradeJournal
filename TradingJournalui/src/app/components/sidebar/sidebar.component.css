@@ -1,5 +1,5 @@
 .container{
-    height: 114vh;
+    height: 120vh;
     width: 20%;
     position: relative;
     display: inline-block;
@@ -34,7 +34,7 @@
 .profile{
     position: absolute;
     left: 35px;
-    bottom: 170px;
+    bottom: 190px;
     margin-bottom: 0;
 }
 

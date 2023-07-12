@@ -1,0 +1,14 @@
+.layout {
+    height: 115vh;
+    width: 77%;
+    position: absolute;
+    top: 15%;
+    right: 15px;
+    background-color: aliceblue;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+.heading {
+    margin-top: 25px;
+    margin-left: 35px;
+}
