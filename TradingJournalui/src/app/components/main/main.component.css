@@ -1,0 +1,51 @@
+.layout {
+    height: 108vh;
+    width: 77%;
+    position: absolute;
+    top: 15%;
+    right: 15px;
+    background-color: aliceblue;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+.heading {
+    margin-top: 25px;
+    margin-left: 25px;
+}
+
+.square {
+    height: 180px;
+    width: 97%;
+    margin-top: 20px;
+    background-color: aliceblue;
+    position: absolute;
+    right: 25px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.profit-col {
+    background-color: whitesmoke;
+    border-radius: 9px;
+    border: 1px solid black;
+}
+
+.nooftrade {
+    background-color: whitesmoke;
+    border-radius: 9px;
+    border: 1px solid black;
+}
+
+.profitperc {
+    background-color: whitesmoke;
+    border-radius: 9px;
+    border: 1px solid black;
+}
+
+.col-head{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+   
+}

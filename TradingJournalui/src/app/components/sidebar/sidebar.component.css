@@ -1,24 +1,15 @@
 .container{
-    height: 100vh;
+    height: 114vh;
     width: 20%;
     position: relative;
     display: inline-block;
-    background-color:aliceblue
-
-}
-.header{
-    width: 100%;
-    height: 60px;
-   font-size: small;
-    z-index: 999999;
-    background-color: aliceblue;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color:aliceblue;
+    border-right:solid 1px black;
+    border-radius: 5px;
 }
 .Sidebar{
     height: 100vh;
-    width: 250px;
+    width: 90%;
     justify-content: center;
     position: relative;
     top: 0;
@@ -42,8 +33,8 @@
 
 .profile{
     position: absolute;
-    left: 29px;
-    bottom: 80px;
+    left: 35px;
+    bottom: 170px;
     margin-bottom: 0;
 }
 

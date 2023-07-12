@@ -23,6 +23,8 @@ this.loginformgroup=this.log.group({
 
 onlogin(){
   this.loginservice.Login(this.loginformgroup.value.UserName,this.loginformgroup.value.Password).subscribe(response=>{
+    // sessionStorage.setItem("UserName",this.loginformgroup.UserName);
+  
     if(response==null){
       alert("enter the correct Username or Password");
     }
