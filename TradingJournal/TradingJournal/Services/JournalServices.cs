@@ -82,6 +82,21 @@ namespace TradingJournal.Services
             }
         }
 
+        public double Profit(string userName)
+        {
+            try
+            {
+                var TotalSalaryMS = journalRepoistories.GetJournalbyUserName(userName)
+                              .Sum(emp => emp.ProfitorLoss);
+                return (double)TotalSalaryMS;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }
 

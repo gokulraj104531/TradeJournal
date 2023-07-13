@@ -87,6 +87,20 @@ namespace TradingJournal.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("Profit/{username}")]
+        public double GetProfit(string username) {
+            try
+            {
+                return journalServices.Profit(username);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
 
     }
 }
