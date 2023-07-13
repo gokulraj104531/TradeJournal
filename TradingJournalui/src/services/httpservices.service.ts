@@ -30,8 +30,20 @@ export class HttpservicesService {
     return this.httpclient.post<Journal>(this.baseurl+"api/Journal/AddTrade",trade);
   }
 
+  //get trade details
   GetTrade(nameid:string){
     return this.httpclient.get(this.baseurl+"api/Journal/GetTradeDetails/"+nameid);
+  }
+
+  //get profit count
+  GetProfitCount(name:string){
+    return this.httpclient.get(this.baseurl+"api/Journal/Profit/"+name);
+  }
+
+
+  //tradecount
+  GetTradeCount(name:string){
+    return this.httpclient.get(this.baseurl+"api/Journal/TotalCount/"+name);
   }
   
 }

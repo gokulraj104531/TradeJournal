@@ -25,9 +25,10 @@
     justify-content: space-evenly;
 
 }
-.profit{
+.profit,.tradecount{
     display:flex;
     justify-content: center;
+    margin-top: 20px;
 
 }
 .profit-col {
