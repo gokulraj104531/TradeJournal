@@ -7,8 +7,10 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class HttpservicesService {
-
-  constructor(private httpclient:HttpClient) {}
+  name:any;
+  constructor(private httpclient:HttpClient) {
+   this.name=sessionStorage.getItem("UserName");
+  }
   baseurl="https://localhost:7012/";
 
 
@@ -28,6 +30,8 @@ export class HttpservicesService {
     return this.httpclient.post<Journal>(this.baseurl+"api/Journal/AddTrade",trade);
   }
 
-
+  GetTrade(){
+    return this.httpclient.get(this.baseurl+"api/Journal/GetTradeDetails/"+this.name);
+  }
   
 }

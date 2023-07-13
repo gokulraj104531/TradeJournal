@@ -3,6 +3,34 @@
         <h6>View Journal</h6>
     </div>
     <div class="view">
-        
+        <div class="row">
+                <table class="table">
+                    <thead>
+                        <th>Stock Name</th>
+                        <th>Order Type</th>
+                        <th>Quantity</th>
+                        <th>Entry Price</th>
+                        <th>Entry Time</th>
+                        <th>Close Price</th>
+                        <th>Close Time </th>
+                        <th>Profit or Loss</th>
+                        <th>Journal Trade</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let trades of trade">
+                            <td>{{trades.stockName|uppercase}}</td>
+                            <td>{{trades.orderType}}</td>
+                            <td>{{trades.quantity}}</td>
+                            <td>{{trades.entryPrice}}</td>
+                            <td>{{trades.entryTime|date:'dd/MM/yyyy'}}</td>
+                            <td>{{trades.closePrice}}</td>
+                            <td>{{trades.closeTime|date:'dd/MM/yyyy'}}</td>
+                            <td>{{trades.profitorLoss}}</td>
+                            <td>{{trades.journalTrade}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-</div>
+

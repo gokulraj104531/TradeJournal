@@ -68,6 +68,20 @@ namespace TradingJournal.Services
             }
         }
 
+        public List<JournalDTO> GetJournalDTOs(string UserName)
+        {
+            try
+            {
+                var tradejournal = journalRepoistories.GetJournalbyUserName(UserName);
+                List<JournalDTO> journalDTOs=_mapper.Map<List<JournalDTO>>(tradejournal);
+                return journalDTOs;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }
 

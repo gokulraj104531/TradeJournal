@@ -45,7 +45,19 @@ namespace TradingJournal.Controllers
                 throw;
             }
         }
+        [HttpGet]
+        [Route("GetTradeDetails/{UserName}")]
+        public List<JournalDTO> GetTradeDetails(string UserName) {
+            try
+            {
+                return journalServices.GetJournalDTOs(UserName);
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
         [HttpPut]
         [Route("EditTrade")]
         public IActionResult EditTrade(JournalDTO journalDTO)
@@ -74,5 +86,7 @@ namespace TradingJournal.Controllers
                 throw;
             }
         }
+
+
     }
 }

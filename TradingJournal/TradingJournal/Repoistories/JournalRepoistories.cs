@@ -68,5 +68,9 @@ namespace TradingJournal.Repoistories
                 throw;
             }
         }
+        public List<Journal> GetJournalbyUserName(string userName)
+        {
+           return _dbcontext.journals.Where(x=>x.UserName == userName).ToList();
+        }
     }
 }
