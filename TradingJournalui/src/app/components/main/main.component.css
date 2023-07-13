@@ -25,7 +25,11 @@
     justify-content: space-evenly;
 
 }
+.profit{
+    display:flex;
+    justify-content: center;
 
+}
 .profit-col {
     background-color: whitesmoke;
     border-radius: 9px;
