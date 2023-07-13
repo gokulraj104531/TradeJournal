@@ -1,57 +1,62 @@
-<div class="layout">
-    <div class="heading">
-        <h3>Add Your Trade</h3>
+<div>
+    <app-header></app-header>
+    <app-sidebar></app-sidebar>
+    <div class="layout">
+        <div class="heading">
+            <h3>Add Your Trade</h3>
+        </div>
+        <form [formGroup]="tradeformgroup" (ngSubmit)="onSubmit()">
+        <div class="form">
+            <div class="row d-flex ">
+                <div class="col-sm-6">
+                    <input type="text" placeholder="Stock Name" formControlName="StockName" />
+                </div>
+                <div class="col-sm-6">
+                    <!-- <input type="text" placeholder="order type" /> -->
+                    <select value="OrderType" class="select" formControlName="OrderType">
+                        <option disabled hidden selected>Order Type</option>
+                        <option value="Long">Long</option>
+                        <option value="short">Short</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="number" placeholder="Quantity" formControlName="Quantity" />
+                </div>
+                <div class="col-sm-6">
+                    <input type="number" placeholder="Entry Price" formControlName="EntryPrice" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="text"  onfocus="(this.type='datetime-local')" placeholder="Entry Time"formControlName="EntryTime" />
+                </div>
+                <div class="col-sm-6">
+                    <input type="number" placeholder="Close Price" formControlName="ClosePrice" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="text" onfocus="(this.type='datetime-local')" placeholder="Close Time" formControlName="CloseTime" />
+                </div>
+                <div class="col-sm-6">
+                    <input type="number" placeholder="Profit or Loss" formControlName="ProfitorLoss"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <textarea class="journal" placeholder="Reason for taking this trade!!!" formControlName="JournalTrade"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="button">
+                    <button class="btn btn-success">Submit</button>
+                </div>
+            </div>
+            
+        </div>
+    </form>
     </div>
-    <form [formGroup]="tradeformgroup" (ngSubmit)="onSubmit()">
-    <div class="form">
-        <div class="row d-flex ">
-            <div class="col-sm-6">
-                <input type="text" placeholder="Stock Name" formControlName="StockName" />
-            </div>
-            <div class="col-sm-6">
-                <!-- <input type="text" placeholder="order type" /> -->
-                <select value="OrderType" class="select" formControlName="OrderType">
-                    <option disabled hidden selected>Order Type</option>
-                    <option value="Long">Long</option>
-                    <option value="short">Short</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <input type="number" placeholder="Quantity" formControlName="Quantity" />
-            </div>
-            <div class="col-sm-6">
-                <input type="number" placeholder="Entry Price" formControlName="EntryPrice" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <input type="text"  onfocus="(this.type='datetime-local')" placeholder="Entry Time"formControlName="EntryTime" />
-            </div>
-            <div class="col-sm-6">
-                <input type="number" placeholder="Close Price" formControlName="ClosePrice" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <input type="text" onfocus="(this.type='datetime-local')" placeholder="Close Time" formControlName="CloseTime" />
-            </div>
-            <div class="col-sm-6">
-                <input type="number" placeholder="Profit or Loss" formControlName="ProfitorLoss"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <textarea class="journal" placeholder="Reason for taking this trade!!!" formControlName="JournalTrade"></textarea>
-            </div>
-        </div>
-        <div class="row">
-            <div class="button">
-                <button class="btn btn-success">Submit</button>
-            </div>
-        </div>
-        
-    </div>
-</form>
 </div>
+

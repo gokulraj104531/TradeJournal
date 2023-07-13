@@ -1,36 +1,39 @@
-<div class="layout">
+<div>
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+  <div class="layout">
     <div class="heading">
-        <h4>View Journal</h4>
+      <h4>View Journal</h4>
     </div>
     <div class="view container-md">
-        <div class="row">
-                <table class="table">
-                    <thead>
-                        <th>StockName</th>
-                        <th>OrderType</th>
-                        <th>Quantity</th>
-                        <th>EntryPrice</th>
-                        <th>EntryTime</th>
-                        <th>ClosePrice</th>
-                        <th>CloseTime </th>
-                        <th>Profit or Loss</th>
-                        <th>JournalTrade</th>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let trades of trade">
-                            <td>{{trades.stockName|uppercase}}</td>
-                            <td>{{trades.orderType}}</td>
-                            <td>{{trades.quantity}}</td>
-                            <td>{{trades.entryPrice}}</td>
-                            <td>{{trades.entryTime|date:'dd/MM/yyyy'}}</td>
-                            <td>{{trades.closePrice}}</td>
-                            <td>{{trades.closeTime|date:'dd/MM/yyyy'}}</td>
-                            <td>{{trades.profitorLoss}}</td>
-                            <td>{{trades.journalTrade}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+      <div class="row">
+        <table class="table">
+          <thead>
+            <th>StockName</th>
+            <th>OrderType</th>
+            <th>Quantity</th>
+            <th>EntryPrice</th>
+            <th>EntryTime</th>
+            <th>ClosePrice</th>
+            <th>CloseTime</th>
+            <th>Profit or Loss</th>
+            <th>JournalTrade</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let trades of trade">
+              <td>{{ trades.stockName | uppercase }}</td>
+              <td>{{ trades.orderType }}</td>
+              <td>{{ trades.quantity }}</td>
+              <td>{{ trades.entryPrice }}</td>
+              <td>{{ trades.entryTime | date : "dd/MM/yyyy" }}</td>
+              <td>{{ trades.closePrice }}</td>
+              <td>{{ trades.closeTime | date : "dd/MM/yyyy" }}</td>
+              <td>{{ trades.profitorLoss }}</td>
+              <td>{{ trades.journalTrade }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-
+  </div>
+</div>
