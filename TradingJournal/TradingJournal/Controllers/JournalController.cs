@@ -19,13 +19,12 @@ namespace TradingJournal.Controllers
 
         [HttpPost]
         [Route("AddTrade")]
-
-        public IActionResult AddTrade(JournalDTO journalDTO)
+        public void AddTrade(JournalDTO journalDTO)
         {
             try
             {
                 journalServices.AddTradeServices(journalDTO);
-                return StatusCode(200, journalDTO);
+               // return StatusCode(200, journalDTO);
             }
             catch (Exception)
             {

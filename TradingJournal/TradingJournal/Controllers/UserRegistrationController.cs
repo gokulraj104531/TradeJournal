@@ -43,16 +43,16 @@ namespace TradingJournal.Controllers
 
         [HttpPost]
         [Route("AddUser")]
-        public IActionResult AddUser(UserRegistrationDTO userRegistrationDTO)
+        public void AddUser(UserRegistrationDTO userRegistrationDTO)
         {
             try
             {
                 _services.AddServices(userRegistrationDTO);
-                return StatusCode(200, userRegistrationDTO);
+               // return StatusCode(200, userRegistrationDTO);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+               // return StatusCode(500, ex.Message);
             }   
         }
 

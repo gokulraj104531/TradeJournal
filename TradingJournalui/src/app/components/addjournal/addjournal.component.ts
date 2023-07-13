@@ -12,19 +12,24 @@ import { HttpservicesService } from 'src/services/httpservices.service';
 export class AddjournalComponent {
   tradearray: Journal[] = [];
   tradeformgroup: FormGroup;
-
+  name:any;
   constructor(
     private tradeservice: HttpservicesService,
     private route: Router,
     private trade: FormBuilder
   ) {
+this.name=sessionStorage.getItem("UserName");
+
     this.tradeformgroup = this.trade.group({
+      journalId:[0],
+      UserName:[this.name],
       StockName: [''],
       OrderType: [''],
       Quantity: [''],
       EntryPrice: [''],
       EntryTime: [''],
       ClosePrice: [''],
+      CloseTime:[''],
       ProfitorLoss: [''],
       JournalTrade: [''],
     });
@@ -35,16 +40,21 @@ export class AddjournalComponent {
       .subscribe((response) => {
         console.log(response);
         this.tradeformgroup.setValue({
+          journalId:'',
+          UserName:'',
           StockName: '',
           OrderType: '',
           Quantity: '',
           EntryPrice: '',
           EntryTime: '',
           ClosePrice: '',
+          CloseTime:'',
           ProfitorLoss: '',
           JournalTrade: '',
         });
         this.route.navigateByUrl('/viewjournal');
+      },(err)=>{
+        console.warn("Error");
       });
   }
 }
