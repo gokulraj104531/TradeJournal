@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 export class HttpservicesService {
   name:any;
   constructor(private httpclient:HttpClient) {
-   this.name=sessionStorage.getItem("UserName");
+   
   }
   baseurl="https://localhost:7012/";
 
@@ -30,8 +30,8 @@ export class HttpservicesService {
     return this.httpclient.post<Journal>(this.baseurl+"api/Journal/AddTrade",trade);
   }
 
-  GetTrade(){
-    return this.httpclient.get(this.baseurl+"api/Journal/GetTradeDetails/"+this.name);
+  GetTrade(nameid:string){
+    return this.httpclient.get(this.baseurl+"api/Journal/GetTradeDetails/"+nameid);
   }
   
 }

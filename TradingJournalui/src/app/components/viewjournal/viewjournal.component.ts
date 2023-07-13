@@ -9,10 +9,11 @@ import { HttpservicesService } from 'src/services/httpservices.service';
 })
 export class ViewjournalComponent{
 trade:any;
+nameid:any;
   tradearray: Journal[] = [];
   constructor(private tradeservice: HttpservicesService) {
-
-   this.tradeservice.GetTrade().subscribe((data)=>
+    this.nameid=sessionStorage.getItem("UserName")
+   this.tradeservice.GetTrade(this.nameid).subscribe((data)=>
     {
       this.trade=data
       console.log(this.trade)

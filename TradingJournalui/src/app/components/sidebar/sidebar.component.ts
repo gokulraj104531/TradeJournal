@@ -14,4 +14,8 @@ constructor (private router:Router)
 LogOut(){
   this.router.navigateByUrl("/login");
 }
+routers()
+{
+  this.router.navigateByUrl('/viewjournal')
+}
 }

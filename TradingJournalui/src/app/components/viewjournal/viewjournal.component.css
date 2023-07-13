@@ -1,3 +1,7 @@
+
+table{
+    font-size: small;
+}
 .layout {
     height: 115vh;
     width: 77%;
@@ -11,15 +15,21 @@
 .heading {
     margin-top: 25px;
     margin-left: 35px;
+    margin-bottom: 15px;
 }
 
 .view{
     height: auto;
     width: 96%;
-    
+    position:absolute;
+    right: 10px;
+
    
 }
 
 table{
-     background-color: transparent;
+     background-color:transparent;
+}
+tbody td{
+    background-color:transparent;
 }
