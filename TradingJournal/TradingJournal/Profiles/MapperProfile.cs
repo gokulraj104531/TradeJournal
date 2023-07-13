@@ -17,6 +17,9 @@ namespace TradingJournal.Profiles
 
             CreateMap<UserRegistration,LoginModel>();
             CreateMap<LoginModel, UserRegistration>();
+
+            CreateMap<Journal,ProfitorLossDTO>();
+            CreateMap<ProfitorLossDTO, Journal>();
         }
     }
 }

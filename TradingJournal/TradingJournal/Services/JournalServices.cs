@@ -97,6 +97,23 @@ namespace TradingJournal.Services
             }
         }
 
+        public int TradeCount(string userName)
+        {
+            try
+            {
+                var totalCount = journalRepoistories.GetJournalbyUserName(userName).Count();
+                return totalCount;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+
     }
 }
 

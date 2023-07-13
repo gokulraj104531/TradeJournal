@@ -101,6 +101,19 @@ namespace TradingJournal.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("TotalCount/{username}")]
+        public int GetProfitCount(string username)
+        {
+            try
+            {
+                return journalServices.TradeCount(username);
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
     }
 }
