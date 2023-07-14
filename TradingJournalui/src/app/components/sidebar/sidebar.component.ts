@@ -12,6 +12,7 @@ constructor (private router:Router)
   this.name=sessionStorage.getItem("UserName");
 }
 LogOut(){
+  sessionStorage.removeItem("UserName");
   this.router.navigateByUrl("/login");
 }
 routers()

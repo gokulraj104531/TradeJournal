@@ -11,7 +11,9 @@
                             <form [formGroup]="Userformgroup" (ngSubmit)="onSubmit()">
                             <div class="username">
                                 <input type="text" placeholder="Username" formControlName="UserName">
+                                <!-- <div *ngIf="(Userformgroup.UserName.invalid && Userformgroup.UserName.touched)">Required</div> -->
                             </div>
+                            
                             <div class="Name">
                                 <input type="text" placeholder="Name" formControlName="Name" >
                             </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserRegisteration } from 'src/models/UserRegisteration';
 import { HttpservicesService } from 'src/services/httpservices.service';
 import { Router } from '@angular/router';
@@ -19,11 +19,11 @@ export class SignupComponent {
     private router: Router
   ) {
     this.Userformgroup = this.fb.group({
-      UserName: [''],
-      Name: [''],
-      Email: [''],
-      Password: [''],
-      PhoneNumber: [''],
+      UserName: ['',Validators.required],
+      Name: ['',Validators.required],
+      Email: ['',Validators.email],
+      Password: ['',Validators.required],
+      PhoneNumber: ['',Validators.required],
     });
   }
 
