@@ -59,7 +59,7 @@ namespace TradingJournal.Services
             try
             {
                 var journal = journalRepoistories.GetJournals();
-                List<JournalDTO> journalDTOs=_mapper.Map<List<JournalDTO>>(journal);
+                List<JournalDTO> journalDTOs = _mapper.Map<List<JournalDTO>>(journal);
                 return journalDTOs;
             }
             catch (Exception)
@@ -73,7 +73,7 @@ namespace TradingJournal.Services
             try
             {
                 var tradejournal = journalRepoistories.GetJournalbyUserName(UserName);
-                List<JournalDTO> journalDTOs=_mapper.Map<List<JournalDTO>>(tradejournal);
+                List<JournalDTO> journalDTOs = _mapper.Map<List<JournalDTO>>(tradejournal);
                 return journalDTOs;
             }
             catch (Exception)
@@ -87,7 +87,7 @@ namespace TradingJournal.Services
             try
             {
                 var TotalSalaryMS = journalRepoistories.GetJournalbyUserName(userName)
-                              .Sum(emp => emp.ProfitorLoss);
+                              .Sum(x => x.ProfitorLoss);
                 return (double)TotalSalaryMS;
             }
             catch (Exception)
@@ -112,8 +112,45 @@ namespace TradingJournal.Services
             }
         }
 
+        public int ProfitPercent(string userName) {
+            try
+            {
+                var UserProfit = journalRepoistories.GetJournalbyUserName(userName).Sum(x => x.ProfitorLoss);
+                double ProfitPercent = ((double)UserProfit / 10000) * 100;
+                return (int)ProfitPercent;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
 
+        public List<ProfitorLossDTO> LineChart(string userName)
+        {
+            try
+            {
+                var userdata = journalRepoistories.GetJournalbyUserName(userName);
+                List<ProfitorLossDTO> profitorLossDTOs =_mapper.Map<List<ProfitorLossDTO>>(userdata);
+                return profitorLossDTOs;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+       
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 

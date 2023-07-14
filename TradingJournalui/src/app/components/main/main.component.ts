@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+import { Chart } from 'chart.js';
 import { HttpservicesService } from 'src/services/httpservices.service';
 
 @Component({
@@ -6,9 +7,10 @@ import { HttpservicesService } from 'src/services/httpservices.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
-export class MainComponent {
+export class MainComponent{
   trade: any;
   name: any;
+  percent:any;
 tradecount: any;
   constructor(private tradeservice: HttpservicesService) {
     this.name = sessionStorage.getItem('UserName');
@@ -20,5 +22,10 @@ tradecount: any;
     this.tradeservice.GetTradeCount(this.name).subscribe((data)=>{
       this.tradecount=data;
     });
+
+    this.tradeservice.ProfitPercent(this.name).subscribe((data)=>{
+      this.percent=data;
+    })
   }
+ 
 }

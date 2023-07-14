@@ -45,5 +45,15 @@ export class HttpservicesService {
   GetTradeCount(name:string){
     return this.httpclient.get(this.baseurl+"api/Journal/TotalCount/"+name);
   }
+
+  //profit percent
+  ProfitPercent(name:string){
+    return this.httpclient.get(this.baseurl+"api/Journal/ProfitPercent/"+name);
+  }
   
+
+  //linechart 
+  Linechart(name:string){
+    return this.httpclient.get(this.baseurl+"api/Journal/LineChart/"+name);
+  }
 }

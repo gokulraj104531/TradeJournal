@@ -25,7 +25,7 @@
     justify-content: space-evenly;
 
 }
-.profit,.tradecount{
+.profit,.tradecount,.percent{
     display:flex;
     justify-content: center;
     margin-top: 20px;
@@ -79,4 +79,11 @@
 .pie-chart{
     background-color:darkcyan;
     height: 270px;
+}
+
+#myChart{
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    top: 0;
 }

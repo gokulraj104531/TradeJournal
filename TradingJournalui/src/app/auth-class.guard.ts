@@ -9,11 +9,13 @@ import { Observable } from 'rxjs';
 export class AuthClassGuard implements CanActivate {
  
   namme=sessionStorage.getItem("UserName");
+  route: any;
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(this.namme=null){
+      if(this.namme==null){
         return false;
+    
       }
       else{
         return true;

@@ -24,7 +24,7 @@ namespace TradingJournal.Controllers
             try
             {
                 journalServices.AddTradeServices(journalDTO);
-               // return StatusCode(200, journalDTO);
+                // return StatusCode(200, journalDTO);
             }
             catch (Exception)
             {
@@ -108,6 +108,38 @@ namespace TradingJournal.Controllers
             try
             {
                 return journalServices.TradeCount(username);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+        [HttpGet]
+        [Route("ProfitPercent/{username}")]
+        public double ProfitPercent(string  username)
+        {
+            try
+            {
+                return journalServices.ProfitPercent(username);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+        [HttpGet]
+        [Route("LineChart/{username}")]
+        public List<ProfitorLossDTO> Linechart(string username)
+        {
+            try
+            {
+                return journalServices.LineChart(username);
             }
             catch (Exception)
             {
