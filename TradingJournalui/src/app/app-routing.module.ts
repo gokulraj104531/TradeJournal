@@ -9,18 +9,19 @@ import { AddjournalComponent } from './components/addjournal/addjournal.componen
 import { ViewjournalComponent } from './components/viewjournal/viewjournal.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { MainComponent } from './components/main/main.component';
+import { AuthClassGuard } from './auth-class.guard';
 
 
 const routes: Routes = [
-  {path:'main',component:MainComponent},
+  {path:'main',component:MainComponent,canActivate:[AuthClassGuard]},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
-  {path:'dashboard',component:DashboardComponent},
-  {path:"charts",component:ChartsComponent},
-  {path:'calendar',component:CalendarComponent},
-  {path:"addjournal",component:AddjournalComponent},
-  {path:"viewjournal",component:ViewjournalComponent},
-  {path:"addjournal",component:AddjournalComponent}
+  {path:'dashboard',component:DashboardComponent,canActivate:[AuthClassGuard]},
+  {path:"charts",component:ChartsComponent,canActivate:[AuthClassGuard]},
+  {path:'calendar',component:CalendarComponent,canActivate:[AuthClassGuard]},
+  {path:"addjournal",component:AddjournalComponent,canActivate:[AuthClassGuard]},
+  {path:"viewjournal",component:ViewjournalComponent,canActivate:[AuthClassGuard]},
+  {path:"addjournal",component:AddjournalComponent,canActivate:[AuthClassGuard]}
 ];
 
 @NgModule({
