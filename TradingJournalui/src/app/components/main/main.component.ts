@@ -7,7 +7,7 @@ import { HttpservicesService } from 'src/services/httpservices.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
-export class MainComponent{
+export class MainComponent implements AfterViewInit{
   trade: any;
   name: any;
   percent:any;
@@ -27,5 +27,30 @@ tradecount: any;
       this.percent=data;
     })
   }
- 
+  ngAfterViewInit(): void {
+    this.createChart();
+  }
+  createChart() {
+    const ctx = document.getElementById('myChart') as HTMLCanvasElement;
+    const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        datasets: [{
+          label: 'My Dataset',
+          data: [10, 20, 30, 40, 50, 60],
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 0.1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
 }

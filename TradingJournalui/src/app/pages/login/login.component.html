@@ -10,15 +10,18 @@
                     <div class="form" [formGroup]="loginformgroup">
                         <div class="username">
                             <input type="text" placeholder="Username" formControlName="UserName">
+                            <div class="text-danger"  *ngIf="loginformgroup.get('UserName')!.invalid && loginformgroup.get('UserName')!.touched"><small>*Username is required.</small></div>
                         </div>
                        <div class="password">
                         <input type="password" placeholder="Password" formControlName="Password">
+                        <div  class="text-danger"  *ngIf="loginformgroup.get('Password') && loginformgroup.get('Password')!.touched"><small>*Password is required.</small></div>
                        </div>
                         <button class="form-button" type="submit" (click)="onlogin()">Login</button>
-                    </div>
-                    <div class="signup-link">
+                        <div class="signup-link">
                         <p>Don't you have an account ?<a routerLink="/signup">Signup!</a></p>
                     </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>

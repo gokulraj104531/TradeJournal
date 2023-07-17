@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserRegisteration } from 'src/models/UserRegisteration';
 import { HttpservicesService } from 'src/services/httpservices.service';
 import { Router } from '@angular/router';
@@ -12,15 +12,14 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
 loginarray:UserRegisteration[]=[];
-loginformgroup:FormGroup;
+loginformgroup!:FormGroup;
 
 constructor(private loginservice:HttpservicesService,private log:FormBuilder,private router:Router){
 this.loginformgroup=this.log.group({
-  UserName:[""],
-  Password:[""]
-})
+  UserName:new FormControl('',Validators.required),
+  Password:new FormControl('',Validators.required),
+});
 }
-
 onlogin(){
   this.loginservice.Login(this.loginformgroup.value.UserName,this.loginformgroup.value.Password).subscribe(response=>{
     sessionStorage.setItem("UserName",this.loginformgroup.value.UserName);
