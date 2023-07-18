@@ -10,10 +10,11 @@ import { AddjournalComponent } from './components/addjournal/addjournal.componen
 import { ViewjournalComponent } from './components/viewjournal/viewjournal.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { AuthInterceptor } from 'src/services/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,12 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:AuthInterceptor,
+    multi:true,
+  },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

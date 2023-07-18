@@ -44,9 +44,9 @@ namespace TradingJournal.Controllers
         }
 
         [HttpPost("Authenticate")]
-        public IActionResult Authenticate(LoginModel login,string User,string Pass)
+        public IActionResult Authenticate(string User,string Pass)
         {
-            if (_services.LoginServices(login) != null) {
+            if (_services.LoginServices(User,Pass) != null) {
                 //return StatusCode(200, "Authenticated user!");
               var result = _services.GenerateToken(User, Pass);
                 return Ok(result);
@@ -54,8 +54,10 @@ namespace TradingJournal.Controllers
             else{
                 return StatusCode(400, "UnAuthenticated user!");
             }
-            
         }
+
+
+
 
         [HttpPost]
         [Route("AddUser")]

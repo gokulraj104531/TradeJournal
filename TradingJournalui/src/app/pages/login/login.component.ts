@@ -21,10 +21,10 @@ this.loginformgroup=this.log.group({
 });
 }
 onlogin(){
-  this.loginservice.Login(this.loginformgroup.value.UserName,this.loginformgroup.value.Password).subscribe((response:any)=>{
+  this.loginservice.Login(this.loginformgroup.value.UserName,this.loginformgroup.value.Password).subscribe((token:string)=>{
     sessionStorage.setItem("UserName",this.loginformgroup.value.UserName);
-  
-    if(response==null){
+     localStorage.setItem('authtoken',token);
+    if(token==null){
       alert("enter the correct Username or Password");
     }
     else{

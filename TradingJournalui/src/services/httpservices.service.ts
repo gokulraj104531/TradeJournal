@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserRegisteration } from 'src/models/UserRegisteration';
 import { Journal } from 'src/models/Journal';
 import {Observable} from 'rxjs';
+import { Token } from '@angular/compiler';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +22,9 @@ export class HttpservicesService {
 
 //Login page
  Login(username:String,password:String):Observable<string>{
-  return this.httpclient.get<string>(this.baseurl+"api/UserRegistration/Login/"+username+"/"+password);
+  return this.httpclient.get(this.baseurl+"api/UserRegistration/Login/"+username+"/"+password,{
+    responseType:'text',
+  });
  }
 
   //Addtrade
