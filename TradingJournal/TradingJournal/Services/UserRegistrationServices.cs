@@ -1,5 +1,9 @@
 ﻿using AutoMapper;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Runtime.InteropServices;
+using System.Security.Claims;
+using System.Security.Cryptography;
 using TradingJournal.DTO;
 using TradingJournal.Models;
 using TradingJournal.Repoistories;
@@ -110,7 +114,64 @@ namespace TradingJournal.Services
         //    }
         //}
 
+        public string GenerateToken(string username, string password)
+        {
+            byte[] keyBytes = new byte[32]; // 256 bits
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(keyBytes);
+            }
+            var key = new SymmetricSecurityKey(keyBytes);
+            var signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
+
+
+            var token = new JwtSecurityToken(
+                issuer: "http://localhost:7012",
+                audience: "https://localhost:4200",
+                claims: new[] { new Claim(username, password) },
+                expires: DateTime.UtcNow.AddMinutes(30), // Set token expiration time
+                signingCredentials: signingCredentials
+            );
+
+
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            return tokenHandler.WriteToken(token);
+        }
+        public bool IsTokenValid(string token)
+        {
+            try
+            {
+                byte[] keyBytes = new byte[32]; // 256 bits
+                using (var rng = RandomNumberGenerator.Create())
+                {
+                    rng.GetBytes(keyBytes);
+                }
+                var key = new SymmetricSecurityKey((keyBytes));
+                var tokenHandler = new JwtSecurityTokenHandler();
+
+
+
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = "http://localhost:7012",
+                    ValidAudience = "http://localhost:4200",
+                    IssuerSigningKey = key
+                }, out var validatedToken);
+
+
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
 
     }

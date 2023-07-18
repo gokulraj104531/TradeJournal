@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Journal } from 'src/models/Journal';
 import { HttpservicesService } from 'src/services/httpservices.service';
@@ -23,15 +23,15 @@ this.name=sessionStorage.getItem("UserName");
     this.tradeformgroup = this.trade.group({
       journalId:[0],
       UserName:[this.name],
-      StockName: [''],
-      OrderType: [''],
-      Quantity: [''],
-      EntryPrice: [''],
-      EntryTime: [''],
-      ClosePrice: [''],
-      CloseTime:[''],
-      ProfitorLoss: [''],
-      JournalTrade: [''],
+      StockName: new FormControl ('',Validators.required),
+      OrderType: new FormControl ('',Validators.required),
+      Quantity: new FormControl ('',Validators.required),
+      EntryPrice: new FormControl ('',Validators.required),
+      EntryTime: new FormControl ('',Validators.required),
+      ClosePrice:new FormControl ('',Validators.required),
+      CloseTime:new FormControl ('',Validators.required),
+      ProfitorLoss: new FormControl ('',Validators.required),
+      JournalTrade: new FormControl ('',Validators.required)
     });
   }
   onSubmit() {

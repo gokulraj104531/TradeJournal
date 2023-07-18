@@ -20,8 +20,8 @@ export class HttpservicesService {
   }
 
 //Login page
- Login(username:String,password:String){
-  return this.httpclient.get(this.baseurl+"api/UserRegistration/Login/"+username+"/"+password);
+ Login(username:String,password:String):Observable<string>{
+  return this.httpclient.get<string>(this.baseurl+"api/UserRegistration/Login/"+username+"/"+password);
  }
 
   //Addtrade

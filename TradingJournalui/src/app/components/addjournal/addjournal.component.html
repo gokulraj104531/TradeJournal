@@ -10,6 +10,8 @@
             <div class="row d-flex ">
                 <div class="col-sm-6">
                     <input type="text" placeholder="Stock Name" formControlName="StockName" />
+                    <br>
+                    <span class="text-danger" *ngIf="(tradeformgroup.get('StockName')!.invalid && tradeformgroup.get('StockName')!.touched)"><small>Required</small></span>
                 </div>
                 <div class="col-sm-6">
                     <!-- <input type="text" placeholder="order type" /> -->
@@ -17,41 +19,49 @@
                         <option disabled hidden selected>Order Type</option>
                         <option value="Long">Long</option>
                         <option value="short">Short</option>
-                    </select>
+                    </select>  <br>
+                    <span class="text-danger" *ngIf="(tradeformgroup.get('OrderType')!.invalid && tradeformgroup.get('OrderType')!.touched)"><small>Required</small></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <input type="number" placeholder="Quantity" formControlName="Quantity" />
+                    <input type="number" placeholder="Quantity" formControlName="Quantity" />  <br>
+                    <span class="text-danger" *ngIf="(tradeformgroup.get('Quantity')!.invalid && tradeformgroup.get('Quantity')!.touched)"><small>Required</small></span>
                 </div>
                 <div class="col-sm-6">
-                    <input type="number" placeholder="Entry Price" formControlName="EntryPrice" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <input type="text"  onfocus="(this.type='datetime-local')" placeholder="Entry Time"formControlName="EntryTime" />
-                </div>
-                <div class="col-sm-6">
-                    <input type="number" placeholder="Close Price" formControlName="ClosePrice" />
+                    <input type="number" placeholder="Entry Price" formControlName="EntryPrice" />  <br>
+                    <span class="text-danger" *ngIf="(tradeformgroup.get('EntryPrice')!.invalid && tradeformgroup.get('EntryPrice')!.touched)"><small>Required</small></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <input type="text" onfocus="(this.type='datetime-local')" placeholder="Close Time" formControlName="CloseTime" />
+                    <input type="text"  onfocus="(this.type='datetime-local')" placeholder="Entry Time"formControlName="EntryTime" />  <br>
+                    <span class="text-danger" *ngIf="(tradeformgroup.get('EntryTime')!.invalid && tradeformgroup.get('EntryTime')!.touched)"><small>Required</small></span>
                 </div>
                 <div class="col-sm-6">
-                    <input type="number" placeholder="Profit or Loss" formControlName="ProfitorLoss"/>
+                    <input type="number" placeholder="Close Price" formControlName="ClosePrice" />  <br>
+                    <span class="text-danger" *ngIf="(tradeformgroup.get('ClosePrice')!.invalid && tradeformgroup.get('ClosePrice')!.touched)"><small>Required</small></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="text" onfocus="(this.type='datetime-local')" placeholder="Close Time" formControlName="CloseTime" />  <br>
+                    <span class="text-danger" *ngIf="(tradeformgroup.get('CloseTime')!.invalid && tradeformgroup.get('CloseTime')!.touched)"><small>Required</small></span>
+                </div>
+                <div class="col-sm-6">
+                    <input type="number" placeholder="Profit or Loss" formControlName="ProfitorLoss"/>  <br>
+                    <span class="text-danger" *ngIf="(tradeformgroup.get('ProfitorLoss')!.invalid && tradeformgroup.get('ProfitorLoss')!.touched)"><small>Required</small></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <textarea class="journal" placeholder="Reason for taking this trade!!!" formControlName="JournalTrade"></textarea>
+                    <textarea class="journal" placeholder="Reason for taking this trade!!!" formControlName="JournalTrade"></textarea>  <br>
+                    <span class="text-danger" *ngIf="(tradeformgroup.get('JournalTrade')!.invalid && tradeformgroup.get('JournalTrade')!.touched)"><small>Required</small></span>
                 </div>
             </div>
             <div class="row">
                 <div class="button">
-                    <button class="btn btn-success">Submit</button>
+                    <button class="btn btn-success" [disabled]="tradeformgroup.invalid">Submit</button>
                 </div>
             </div>
             

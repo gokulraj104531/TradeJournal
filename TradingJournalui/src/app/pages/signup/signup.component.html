@@ -35,7 +35,7 @@
                                 <br>
                                 <span class="text-danger" *ngIf="(Userformgroup.get('PhoneNumber')!.invalid && Userformgroup.get('PhoneNumber')!.touched)"><small>Required</small></span>
                             </div>
-                            <button class="form-button" type="submit">Register</button>
+                            <button class="form-button" type="submit" [disabled]="Userformgroup.invalid">Register</button>
                         </form>
                         </div>
                    

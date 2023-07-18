@@ -210,3 +210,5 @@ D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\obj\Debug\net6.0\re
 D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\obj\Debug\net6.0\TradingJournal.pdb
 D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\obj\Debug\net6.0\TradingJournal.genruntimeconfig.cache
 D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\obj\Debug\net6.0\ref\TradingJournal.dll
+D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll

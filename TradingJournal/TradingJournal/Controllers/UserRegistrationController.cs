@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.Eventing.Reader;
 using System.Reflection.Metadata.Ecma335;
 using TradingJournal.DTO;
 using TradingJournal.Models;
@@ -20,11 +21,20 @@ namespace TradingJournal.Controllers
 
         [HttpGet]
         [Route("Login/{User}/{Pass}")]
-        public LoginModel Login(string User,string Pass)
-        {
+        public string? Login(string User,string Pass) { 
             try
             {
-                return _services.LoginServices(User, Pass);
+                var validuser= _services.LoginServices(User, Pass);
+                if(validuser != null)
+                {
+                    var result = _services.GenerateToken(User, Pass);
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+                
             }
             catch (Exception)
             {
@@ -34,11 +44,17 @@ namespace TradingJournal.Controllers
         }
 
         [HttpPost("Authenticate")]
-        public IActionResult Authenticate(LoginModel login)
+        public IActionResult Authenticate(LoginModel login,string User,string Pass)
         {
-            if (_services.LoginServices(login) != null)
-                return StatusCode(200, "Authenticated user!");
-            return StatusCode(400, "UnAuthenticated user!");
+            if (_services.LoginServices(login) != null) {
+                //return StatusCode(200, "Authenticated user!");
+              var result = _services.GenerateToken(User, Pass);
+                return Ok(result);
+            }
+            else{
+                return StatusCode(400, "UnAuthenticated user!");
+            }
+            
         }
 
         [HttpPost]
@@ -50,7 +66,7 @@ namespace TradingJournal.Controllers
                 _services.AddServices(userRegistrationDTO);
                // return StatusCode(200, userRegistrationDTO);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                // return StatusCode(500, ex.Message);
             }   

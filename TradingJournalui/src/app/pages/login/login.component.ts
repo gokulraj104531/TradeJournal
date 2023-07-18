@@ -21,7 +21,7 @@ this.loginformgroup=this.log.group({
 });
 }
 onlogin(){
-  this.loginservice.Login(this.loginformgroup.value.UserName,this.loginformgroup.value.Password).subscribe(response=>{
+  this.loginservice.Login(this.loginformgroup.value.UserName,this.loginformgroup.value.Password).subscribe((response:any)=>{
     sessionStorage.setItem("UserName",this.loginformgroup.value.UserName);
   
     if(response==null){
@@ -33,6 +33,7 @@ onlogin(){
    
   },
   (error)=>{
+    console.warn(error)
     alert("Stay relax and Enter Your Data in text box first")
   });
 }

@@ -16,7 +16,7 @@
                         <input type="password" placeholder="Password" formControlName="Password">
                         <div  class="text-danger"  *ngIf="loginformgroup.get('Password') && loginformgroup.get('Password')!.touched"><small>*Password is required.</small></div>
                        </div>
-                        <button class="form-button" type="submit" (click)="onlogin()">Login</button>
+                        <button class="form-button" type="submit" [disabled]="loginformgroup.invalid"   (click)="onlogin()">Login</button>
                         <div class="signup-link">
                         <p>Don't you have an account ?<a routerLink="/signup">Signup!</a></p>
                     </div>

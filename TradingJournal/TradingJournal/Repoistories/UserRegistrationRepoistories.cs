@@ -70,7 +70,7 @@ namespace TradingJournal.Repoistories
         }
 
 
-        public UserRegistration Login(string username, string password)
+        public UserRegistration? Login(string username, string password)
         {
             try
             {
@@ -93,7 +93,7 @@ namespace TradingJournal.Repoistories
 
 
 
-        public UserRegistration GetUserByName(LoginModel loginModel)
+        public UserRegistration? GetUserByName(LoginModel loginModel)
         {
             try
             {
