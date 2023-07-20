@@ -10,11 +10,11 @@
                     <div class="form" [formGroup]="loginformgroup">
                         <div class="username">
                             <input type="text" placeholder="Username" formControlName="UserName">
-                            <div class="text-danger"  *ngIf="loginformgroup.get('UserName')!.invalid && loginformgroup.get('UserName')!.touched"><small>*Username is required.</small></div>
+                            <div class="text-danger" *ngIf="loginformgroup.get('UserName')!.invalid && loginformgroup.get('UserName')!.touched"><small>*Username is required.</small></div>
                         </div>
                        <div class="password">
                         <input type="password" placeholder="Password" formControlName="Password">
-                        <div  class="text-danger"  *ngIf="loginformgroup.get('Password') && loginformgroup.get('Password')!.touched"><small>*Password is required.</small></div>
+                        <div  class="text-danger" *ngIf="loginformgroup.get('Password')!.invalid && loginformgroup.get('Password')!.touched"><small>*Password is required.</small></div>
                        </div>
                         <button class="form-button" type="submit" [disabled]="loginformgroup.invalid"   (click)="onlogin()">Login</button>
                         <div class="signup-link">
