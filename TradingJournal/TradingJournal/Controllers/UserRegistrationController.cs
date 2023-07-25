@@ -5,6 +5,7 @@ using System.Reflection.Metadata.Ecma335;
 using TradingJournal.DTO;
 using TradingJournal.Models;
 using TradingJournal.Services;
+using TradingJournal.Services.Interfaces;
 
 namespace TradingJournal.Controllers
 {
@@ -12,9 +13,9 @@ namespace TradingJournal.Controllers
     [ApiController]
     public class UserRegistrationController : ControllerBase
     {
-        private readonly UserRegistrationServices _services;
+        private readonly IUserRegistrationService _services;
 
-        public UserRegistrationController(UserRegistrationServices services)
+        public UserRegistrationController(IUserRegistrationService services)
         {
             this._services = services;
         }
@@ -27,7 +28,7 @@ namespace TradingJournal.Controllers
                 var validuser= _services.LoginServices(User, Pass);
                 if(validuser != null)
                 {
-                    var result = _services.GenerateToken(User, Pass);
+                    var result = _services.GenerateToken(User);
                     return result;
                 }
                 else
@@ -48,7 +49,7 @@ namespace TradingJournal.Controllers
         {
             if (_services.LoginServices(User,Pass) != null) {
                 //return StatusCode(200, "Authenticated user!");
-              var result = _services.GenerateToken(User, Pass);
+              var result = _services.GenerateToken(User);
                 return Ok(result);
             }
             else{

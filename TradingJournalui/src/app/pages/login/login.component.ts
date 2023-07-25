@@ -22,7 +22,7 @@ this.loginformgroup=this.log.group({
 }
 onlogin(){
   this.loginservice.Login(this.loginformgroup.value.UserName,this.loginformgroup.value.Password).subscribe((token:string)=>{
-    sessionStorage.setItem("UserName",this.loginformgroup.value.UserName);
+     sessionStorage.setItem("UserName",this.loginformgroup.value.UserName);
      localStorage.setItem('authtoken',token);
     if(token==null){
       alert("enter the correct Username or Password");

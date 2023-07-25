@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TradingJournal.DTO;
 using TradingJournal.Models;
 using TradingJournal.Services;
+using TradingJournal.Services.Interfaces;
 
 namespace TradingJournal.Controllers
 {
@@ -10,9 +11,9 @@ namespace TradingJournal.Controllers
     [ApiController]
     public class JournalController : ControllerBase
     {
-        private readonly JournalServices journalServices;
+        private readonly IJournalServices journalServices;
 
-        public JournalController(JournalServices journalServices)
+        public JournalController(IJournalServices journalServices)
         {
             this.journalServices = journalServices;
         }

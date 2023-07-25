@@ -1,9 +1,10 @@
 ﻿using TradingJournal.Data;
 using TradingJournal.Models;
+using TradingJournal.Repoistories.Interfaces;
 
 namespace TradingJournal.Repoistories
 {
-    public class JournalRepoistories
+    public class JournalRepoistories:IJournalRepoistories
     {
         private readonly ApplicationDbContext _dbcontext;
 

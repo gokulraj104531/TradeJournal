@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore.SqlServer;
 using TradingJournal.Data;
 using TradingJournal.Models;
 using TradingJournal.Repoistories;
+using TradingJournal.Repoistories.Interfaces;
 using TradingJournal.Services;
+using TradingJournal.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,10 +17,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddAutoMapper(typeof(Program));
-builder.Services.AddTransient<UserRegistrationRepoistories>();
-builder.Services.AddTransient<JournalRepoistories>();
-builder.Services.AddTransient<UserRegistrationServices>();
-builder.Services.AddTransient<JournalServices>();
+builder.Services.AddTransient<IUserRegistrationRepoistories,UserRegistrationRepoistories>();
+builder.Services.AddTransient<IJournalRepoistories, JournalRepoistories>();
+builder.Services.AddTransient<IUserRegistrationService, UserRegistrationServices>();
+builder.Services.AddTransient<IJournalServices,JournalServices>();
 
 builder.Services.AddCors((corsOptions) =>
 {

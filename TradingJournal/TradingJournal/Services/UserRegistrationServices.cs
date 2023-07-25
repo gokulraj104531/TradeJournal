@@ -7,15 +7,17 @@ using System.Security.Cryptography;
 using TradingJournal.DTO;
 using TradingJournal.Models;
 using TradingJournal.Repoistories;
+using TradingJournal.Repoistories.Interfaces;
+using TradingJournal.Services.Interfaces;
 
 namespace TradingJournal.Services
 {
-    public class UserRegistrationServices
+    public class UserRegistrationServices:IUserRegistrationService
     {
-        private readonly UserRegistrationRepoistories userRegistrationRepoistories;
+        private readonly IUserRegistrationRepoistories userRegistrationRepoistories;
         private readonly IMapper _mapper;
 
-        public UserRegistrationServices(UserRegistrationRepoistories userRegistrationRepoistories, IMapper mapper)
+        public UserRegistrationServices(IUserRegistrationRepoistories userRegistrationRepoistories, IMapper mapper)
         {
             this.userRegistrationRepoistories = userRegistrationRepoistories;
             _mapper = mapper;
@@ -114,9 +116,9 @@ namespace TradingJournal.Services
         //    }
         //}
 
-        public string GenerateToken(string username, string password)
+        public string GenerateToken(string username)
         {
-            byte[] keyBytes = new byte[32]; // 256 bits
+            byte[] keyBytes = new byte[32]; 
             using (var rng = RandomNumberGenerator.Create())
             {
                 rng.GetBytes(keyBytes);
@@ -124,26 +126,22 @@ namespace TradingJournal.Services
             var key = new SymmetricSecurityKey(keyBytes);
             var signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-
-
             var token = new JwtSecurityToken(
                 issuer: "http://localhost:7012",
                 audience: "https://localhost:4200",
-                claims: new[] { new Claim(username, password) },
-                expires: DateTime.UtcNow.AddMinutes(30), // Set token expiration time
+                claims: new[] { new Claim("UserName",username) },
+                expires: DateTime.UtcNow.AddMinutes(30), 
                 signingCredentials: signingCredentials
             );
 
-
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            return tokenHandler.WriteToken(token);
+                var tokenHandler = new JwtSecurityTokenHandler();
+                return tokenHandler.WriteToken(token);
         }
         public bool IsTokenValid(string token)
         {
             try
             {
-                byte[] keyBytes = new byte[32]; // 256 bits
+                byte[] keyBytes = new byte[32]; 
                 using (var rng = RandomNumberGenerator.Create())
                 {
                     rng.GetBytes(keyBytes);

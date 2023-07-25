@@ -3,14 +3,16 @@ using TradingJournal.Data;
 using TradingJournal.DTO;
 using TradingJournal.Models;
 using TradingJournal.Repoistories;
+using TradingJournal.Repoistories.Interfaces;
+using TradingJournal.Services.Interfaces;
 
 namespace TradingJournal.Services
 {
-    public class JournalServices
+    public class JournalServices : IJournalServices
     {
-        private readonly JournalRepoistories journalRepoistories;
+        private readonly IJournalRepoistories journalRepoistories;
         private readonly IMapper _mapper;
-        public JournalServices(JournalRepoistories _journalRepoistories, IMapper mapper)
+        public JournalServices(IJournalRepoistories _journalRepoistories, IMapper mapper)
         {
             journalRepoistories = _journalRepoistories;
             _mapper = mapper;

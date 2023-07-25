@@ -2,10 +2,11 @@
 using Microsoft.IdentityModel.Tokens;
 using TradingJournal.Data;
 using TradingJournal.Models;
+using TradingJournal.Repoistories.Interfaces;
 
 namespace TradingJournal.Repoistories
 {
-    public class UserRegistrationRepoistories
+    public class UserRegistrationRepoistories:IUserRegistrationRepoistories
     {
         private readonly ApplicationDbContext _dbcontext;
 
