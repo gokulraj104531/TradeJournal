@@ -106,12 +106,12 @@ namespace TradingJournal.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteUser/{id}")]
-        public void DeleteUser(int id)
+        [Route("DeleteUser/{Username}")]
+        public void DeleteUser(string Username)
         {
             try
             {
-                _services.DeleteServices(id);
+                _services.DeleteServices(Username);
             }
             catch (Exception)
             {

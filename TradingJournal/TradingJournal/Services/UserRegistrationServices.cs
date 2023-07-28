@@ -12,15 +12,17 @@ using TradingJournal.Services.Interfaces;
 
 namespace TradingJournal.Services
 {
-    public class UserRegistrationServices:IUserRegistrationService
+    public class UserRegistrationServices : IUserRegistrationService
     {
         private readonly IUserRegistrationRepoistories userRegistrationRepoistories;
         private readonly IMapper _mapper;
-
-        public UserRegistrationServices(IUserRegistrationRepoistories userRegistrationRepoistories, IMapper mapper)
+        public IUnitofWork _unitofWork;
+        public UserRegistrationServices(IUserRegistrationRepoistories userRegistrationRepoistories, IMapper mapper, IUnitofWork unitofWork)
         {
             this.userRegistrationRepoistories = userRegistrationRepoistories;
             _mapper = mapper;
+            _unitofWork = unitofWork;
+
         }
 
         public UserRegistrationDTO LoginServices(LoginModel loginModel)
@@ -50,7 +52,8 @@ namespace TradingJournal.Services
             try
             {
                 UserRegistration userRegistration = _mapper.Map<UserRegistration>(userRegistrationDTO);
-                userRegistrationRepoistories.UpdateUser(userRegistration);  
+                _unitofWork.UserRegistrationRepoistories.Updates(userRegistration);  
+                _unitofWork.Commit();
             }
             catch (Exception)
             {
@@ -72,11 +75,11 @@ namespace TradingJournal.Services
             }
         }
 
-        public void DeleteServices(int id)
+        public void DeleteServices(string username)
         {
             try
             {
-                userRegistrationRepoistories.DeleteUser(id);
+                userRegistrationRepoistories.DeleteUser(username);
             }
             catch (Exception)
             {

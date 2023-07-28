@@ -19,9 +19,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddTransient<IUserRegistrationRepoistories,UserRegistrationRepoistories>();
 builder.Services.AddTransient<IJournalRepoistories, JournalRepoistories>();
-builder.Services.AddTransient<IUserRegistrationService, UserRegistrationServices>();
-builder.Services.AddTransient<IJournalServices,JournalServices>();
-
+builder.Services.AddTransient(typeof(IUserRegistrationService), typeof(UserRegistrationServices));
+builder.Services.AddTransient(typeof(IJournalServices), typeof(JournalServices));
+builder.Services.AddScoped<IUnitofWork,UnitofWork>();
 builder.Services.AddCors((corsOptions) =>
 {
     corsOptions.AddPolicy("Mypolicy", (policyoptions) =>
