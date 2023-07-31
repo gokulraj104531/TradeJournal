@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TradingJournal.Data;
+using TradingJournal.Models;
 using TradingJournal.Repoistories.Interfaces;
 
 namespace TradingJournal.Repoistories
@@ -15,19 +16,39 @@ namespace TradingJournal.Repoistories
             dbset = _dbContext.Set<T>();
         }
 
-       //public void Deletes(T entity)
-       // {
-       //     var rem = dbset.Find(entity);
-       //     dbset.Remove(rem);
-       // }
+     
 
         public void Updates(T  entity)
         {
-            dbset.Update(entity);
+             dbset.Update(entity);
             _dbContext.SaveChanges();
         }
 
+        //public void Adds(T entity)
+        //{
+        //    dbset.Add(entity);
+        //    _dbContext.SaveChanges();
+        //}
       
+        public List<T> GetAll()
+        {
+            List<T> list = dbset.ToList();
+            return list;
+        }
+
+        //public void Deletes(T entity)
+        //{
+        //    var delete = dbset.Find(entity);
+        //    if (delete != null)
+        //    {
+        //        dbset.Remove(delete);
+        //    }
+        //}
+
+        //public DbSet<T> GetEntities<T>() where T : class
+        //{
+        //    return _dbContext.Set<T>();
+        //}
 
     }
 }

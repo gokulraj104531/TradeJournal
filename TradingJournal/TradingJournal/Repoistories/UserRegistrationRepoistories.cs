@@ -47,7 +47,9 @@ namespace TradingJournal.Repoistories
         {
             try
             {
-                UserRegistration userRegistration = _dbContext.userRegistrations.Where(x => x.UserName == username).FirstOrDefault();
+                //var geUserEntity= GetEntities<UserRegistration>().FirstOrDefault(x => x.UserName == username);
+                //Deletes(geUserEntity);
+                UserRegistration userRegistration = _dbContext.userRegistrations.Find(username);
                 _dbContext.Remove(userRegistration);
                 _dbContext.SaveChanges();
             }
@@ -57,19 +59,19 @@ namespace TradingJournal.Repoistories
             }
         }
 
-        public List<UserRegistration> GetUsers()
-        {
-            try
-            {
-                List<UserRegistration> users = _dbContext.userRegistrations.ToList();
-                return users;
-            }
-            catch (Exception)
-            {
+        //public List<UserRegistration> GetUsers()
+        //{
+        //    try
+        //    {
+        //        List<UserRegistration> users = _dbContext.userRegistrations.ToList();
+        //        return users;
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
 
 
         public UserRegistration? Login(string username, string password)

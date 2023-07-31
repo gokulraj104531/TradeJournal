@@ -25,8 +25,7 @@ namespace TradingJournal.Repoistories
             }
         }
 
-      //  public IJournalRepoistories journalRepoistories => throw new NotImplementedException();
-
+      
         public IUserRegistrationRepoistories UserRegistrationRepoistories
         {
             get
@@ -35,7 +34,7 @@ namespace TradingJournal.Repoistories
             }
         }
 
-       // public IUserRegistrationRepoistories userRegistrationRepoistories => throw new NotImplementedException();
+       
 
         public void Commit()
         {

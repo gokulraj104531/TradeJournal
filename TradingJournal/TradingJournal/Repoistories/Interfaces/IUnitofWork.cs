@@ -1,4 +1,6 @@
-﻿namespace TradingJournal.Repoistories.Interfaces
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace TradingJournal.Repoistories.Interfaces
 {
     public interface IUnitofWork
     {
