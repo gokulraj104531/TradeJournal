@@ -9,7 +9,7 @@ namespace TradingJournal.Services.Interfaces
         void AddServices(UserRegistrationDTO userRegistrationDTO);
         void UpdateServices(UserRegistrationDTO userRegistrationDTO);
         List<UserRegistrationDTO> GetServices();
-        void DeleteServices(int id);
+        void DeleteServices(string username);
         LoginModel LoginServices(string username, string password);
         string GenerateToken(string username);
         bool IsTokenValid(string token);

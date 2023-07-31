@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using TradingJournal.Data;
 using TradingJournal.Models;
@@ -6,13 +7,12 @@ using TradingJournal.Repoistories.Interfaces;
 
 namespace TradingJournal.Repoistories
 {
-    public class UserRegistrationRepoistories:IUserRegistrationRepoistories
+    public class UserRegistrationRepoistories : GenericRepository<UserRegistration>, IUserRegistrationRepoistories
     {
-        private readonly ApplicationDbContext _dbcontext;
-
-        public UserRegistrationRepoistories(ApplicationDbContext context)
+        private readonly ApplicationDbContext _dbContext;
+        public UserRegistrationRepoistories(ApplicationDbContext applicationDbContext):base(applicationDbContext)
         {
-            _dbcontext = context;
+            _dbContext = applicationDbContext;
         }
 
         public void AddUser(UserRegistration user)
@@ -20,8 +20,8 @@ namespace TradingJournal.Repoistories
             try
             {
                 user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-                _dbcontext.userRegistrations.Add(user);
-                _dbcontext.SaveChanges();
+                _dbContext.userRegistrations.Add(user);
+                _dbContext.SaveChanges();
             }
             catch (Exception)
             {
@@ -29,27 +29,29 @@ namespace TradingJournal.Repoistories
             }
         }
 
-        public void UpdateUser(UserRegistration user)
+        //public void UpdateUser(UserRegistration user)
+        //{
+        //    try
+        //    {
+        //        _dbcontext.userRegistrations.Update(user);
+        //        _dbcontext.SaveChanges();
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
+
+        public void DeleteUser(string username)
         {
             try
             {
-                _dbcontext.userRegistrations.Update(user);
-                _dbcontext.SaveChanges();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public void DeleteUser(int id)
-        {
-            try
-            {
-                UserRegistration userRegistration = _dbcontext.userRegistrations.Find(id);
-                _dbcontext.Remove(userRegistration);
-                _dbcontext.SaveChanges();
+                //var geUserEntity= GetEntities<UserRegistration>().FirstOrDefault(x => x.UserName == username);
+                //Deletes(geUserEntity);
+                UserRegistration userRegistration = _dbContext.userRegistrations.Find(username);
+                _dbContext.Remove(userRegistration);
+                _dbContext.SaveChanges();
             }
             catch (Exception)
             {
@@ -57,25 +59,26 @@ namespace TradingJournal.Repoistories
             }
         }
 
-        public List<UserRegistration> GetUsers() {
-            try
-            {
-                List<UserRegistration> users=_dbcontext.userRegistrations.ToList();
-                return users;
-            }
-            catch (Exception)
-            {
+        //public List<UserRegistration> GetUsers()
+        //{
+        //    try
+        //    {
+        //        List<UserRegistration> users = _dbContext.userRegistrations.ToList();
+        //        return users;
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }    
-        }
+        //        throw;
+        //    }
+        //}
 
 
         public UserRegistration? Login(string username, string password)
         {
             try
             {
-                UserRegistration userRegistration = _dbcontext.userRegistrations.Find(username);
+                UserRegistration userRegistration = _dbContext.userRegistrations.Find(username);
                 if(userRegistration!= null)
                 {
                     if (BCrypt.Net.BCrypt.Verify(password, userRegistration.Password))
@@ -98,7 +101,7 @@ namespace TradingJournal.Repoistories
         {
             try
             {
-                UserRegistration userRegistration = _dbcontext.userRegistrations.FirstOrDefault(x => x.UserName == loginModel.UserName);
+                UserRegistration userRegistration = _dbContext.userRegistrations.FirstOrDefault(x => x.UserName == loginModel.UserName);
                 if(userRegistration != null)
                 {
                     if(userRegistration.Password == loginModel.Password)
@@ -113,9 +116,8 @@ namespace TradingJournal.Repoistories
                 throw;
             }
         }
-        
 
-       
+      
     }
 }
 

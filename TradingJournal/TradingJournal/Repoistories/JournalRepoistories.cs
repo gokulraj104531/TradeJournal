@@ -1,14 +1,15 @@
-﻿using TradingJournal.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using TradingJournal.Data;
 using TradingJournal.Models;
 using TradingJournal.Repoistories.Interfaces;
 
 namespace TradingJournal.Repoistories
 {
-    public class JournalRepoistories:IJournalRepoistories
+    public class JournalRepoistories: GenericRepository<Journal>,IJournalRepoistories
     {
         private readonly ApplicationDbContext _dbcontext;
 
-        public JournalRepoistories(ApplicationDbContext dbcontext)
+        public JournalRepoistories(ApplicationDbContext dbcontext) : base(dbcontext)
         {
             _dbcontext = dbcontext;
         }
@@ -26,18 +27,20 @@ namespace TradingJournal.Repoistories
             }
         }
 
-        public void UpdateTrade(Journal journal) {
-            try
-            {
-                _dbcontext.journals.Update(journal);
-                _dbcontext.SaveChanges();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public void DeleteTrade(int id) {
+        //public void UpdateTrade(Journal journal) {
+        //    try
+        //    {
+        //        _dbcontext.journals.Update(journal);
+        //        _dbcontext.SaveChanges();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
+
+        public void DeleteTrade(int id)
+        {
             try
             {
                 Journal journal = _dbcontext.journals.Find(id);
@@ -58,22 +61,27 @@ namespace TradingJournal.Repoistories
             }
         }
 
-        public List<Journal> GetJournals() {
-            try
-            {
-                List<Journal> journals = _dbcontext.journals.ToList();
-                return journals;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        //public List<Journal> GetJournals()
+        //{
+        //    try
+        //    {
+        //        List<Journal> journals = _dbcontext.journals.ToList();
+        //        return journals;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
+
+
         public List<Journal> GetJournalbyUserName(string userName)
         {
            return _dbcontext.journals.Where(x=>x.UserName == userName).ToList();
         }
 
+
         
+
     }
 }

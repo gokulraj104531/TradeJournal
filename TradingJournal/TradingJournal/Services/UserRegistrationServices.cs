@@ -12,15 +12,19 @@ using TradingJournal.Services.Interfaces;
 
 namespace TradingJournal.Services
 {
-    public class UserRegistrationServices:IUserRegistrationService
+    public class UserRegistrationServices : IUserRegistrationService
     {
         private readonly IUserRegistrationRepoistories userRegistrationRepoistories;
         private readonly IMapper _mapper;
-
-        public UserRegistrationServices(IUserRegistrationRepoistories userRegistrationRepoistories, IMapper mapper)
+        public IUnitofWork _unitofWork;
+        //public IGenericRepository<UserRegistration> _genericRepository;
+        public UserRegistrationServices(IUserRegistrationRepoistories userRegistrationRepoistories, IMapper mapper, IUnitofWork unitofWork /* IGenericRepository<UserRegistration> genericRepository*/)
         {
             this.userRegistrationRepoistories = userRegistrationRepoistories;
             _mapper = mapper;
+            _unitofWork = unitofWork;
+            //_genericRepository = genericRepository;
+
         }
 
         public UserRegistrationDTO LoginServices(LoginModel loginModel)
@@ -38,6 +42,7 @@ namespace TradingJournal.Services
             {
                 UserRegistration userRegistration=_mapper.Map<UserRegistration>(userRegistrationDTO);
                 userRegistrationRepoistories.AddUser(userRegistration);
+                //_unitofWork.UserRegistrationRepoistories.Adds(userRegistration);
             }
             catch (Exception)
             {
@@ -50,7 +55,8 @@ namespace TradingJournal.Services
             try
             {
                 UserRegistration userRegistration = _mapper.Map<UserRegistration>(userRegistrationDTO);
-                userRegistrationRepoistories.UpdateUser(userRegistration);  
+                _unitofWork.UserRegistrationRepoistories.Updates(userRegistration);  
+                _unitofWork.Commit();
             }
             catch (Exception)
             {
@@ -62,7 +68,7 @@ namespace TradingJournal.Services
         {
             try
             {
-                var userRegistration = userRegistrationRepoistories.GetUsers();
+                var userRegistration = _unitofWork.UserRegistrationRepoistories.GetAll();
                 List<UserRegistrationDTO> userRegistrationDTOs=_mapper.Map<List<UserRegistrationDTO>>(userRegistration);
                 return userRegistrationDTOs;
             }
@@ -72,11 +78,13 @@ namespace TradingJournal.Services
             }
         }
 
-        public void DeleteServices(int id)
+        public void DeleteServices(string username)
         {
             try
             {
-                userRegistrationRepoistories.DeleteUser(id);
+                //var geUserEntity = _genericRepository.GetEntities<UserRegistration>().FirstOrDefault(x => x.UserName == username);
+                //_genericRepository.Deletes(geUserEntity);
+                userRegistrationRepoistories.DeleteUser(username);
             }
             catch (Exception)
             {

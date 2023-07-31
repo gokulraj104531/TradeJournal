@@ -12,10 +12,13 @@ namespace TradingJournal.Services
     {
         private readonly IJournalRepoistories journalRepoistories;
         private readonly IMapper _mapper;
-        public JournalServices(IJournalRepoistories _journalRepoistories, IMapper mapper)
+        private readonly IUnitofWork _unitofwork;
+        public JournalServices(IJournalRepoistories _journalRepoistories, IMapper mapper, IUnitofWork unitofwork)
         {
             journalRepoistories = _journalRepoistories;
             _mapper = mapper;
+            _unitofwork = unitofwork;
+
         }
 
         public void AddTradeServices(JournalDTO journalDTO) {
@@ -23,6 +26,7 @@ namespace TradingJournal.Services
             {
                 Journal journal = _mapper.Map<Journal>(journalDTO);
                 journalRepoistories.AddTrade(journal);
+                //_unitofwork.JournalRepoistories.Adds(journal);
             }
             catch (Exception)
             {
@@ -36,7 +40,7 @@ namespace TradingJournal.Services
             try
             {
                 Journal journal = _mapper.Map<Journal>(journalDTO);
-                journalRepoistories.UpdateTrade(journal);
+                _unitofwork.JournalRepoistories.Updates(journal);
             }
             catch (Exception)
             {
@@ -60,7 +64,7 @@ namespace TradingJournal.Services
         {
             try
             {
-                var journal = journalRepoistories.GetJournals();
+                var journal =_unitofwork.JournalRepoistories.GetAll();
                 List<JournalDTO> journalDTOs = _mapper.Map<List<JournalDTO>>(journal);
                 return journalDTOs;
             }
