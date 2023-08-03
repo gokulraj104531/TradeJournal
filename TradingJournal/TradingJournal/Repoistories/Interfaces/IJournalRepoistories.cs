@@ -12,5 +12,7 @@ namespace TradingJournal.Repoistories.Interfaces
         //List<Journal> GetJournals();
 
         List<Journal> GetJournalbyUserName(string userName);
+
+        List<Journal> GetJournalByid(int id);
     }
 }

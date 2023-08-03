@@ -6,6 +6,7 @@ namespace TradingJournal.Services.Interfaces
     {
         void AddTradeServices(JournalDTO journalDTO);
         void UpdateTradeServices(JournalDTO journalDTO);
+        List<JournalDTO> GetJournalByIdServices(int id);
         void DeleteTradeServices(int id);
         List<JournalDTO> GetJournalServices();
         List<JournalDTO> GetJournalDTOs(string UserName);

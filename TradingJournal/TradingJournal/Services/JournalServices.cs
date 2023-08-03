@@ -48,6 +48,21 @@ namespace TradingJournal.Services
             }
         }
 
+        public List<JournalDTO> GetJournalByIdServices(int id) {
+            try
+            {
+                var journaldata=journalRepoistories.GetJournalByid(id);
+                List<JournalDTO> idjournalDTOs = _mapper.Map<List<JournalDTO>>(journaldata);
+                return idjournalDTOs;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public void DeleteTradeServices(int id)
         {
             try

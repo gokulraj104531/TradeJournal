@@ -46,6 +46,27 @@ namespace TradingJournal.Controllers
                 throw;
             }
         }
+
+
+        [HttpGet]
+        [Route("GetTradeDetailsByID/{id}")]
+        public List<JournalDTO> GetJournalById(int id)
+        {
+            try
+            {
+                return journalServices.GetJournalByIdServices(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+
+
+
         [HttpGet]
         [Route("GetTradeDetails/{UserName}")]
         public List<JournalDTO> GetTradeDetails(string UserName) {

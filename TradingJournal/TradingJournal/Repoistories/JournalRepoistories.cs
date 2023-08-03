@@ -80,7 +80,19 @@ namespace TradingJournal.Repoistories
            return _dbcontext.journals.Where(x=>x.UserName == userName).ToList();
         }
 
+        public List<Journal> GetJournalByid(int id)
+        {
+            try
+            {
+                var getJournalById = _dbContext.journals.Where(x => x.journalId == id).ToList();
+                return getJournalById;
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
         
 
     }
