@@ -128,8 +128,8 @@ export class AddjournalComponent implements OnInit {
           this.route.navigateByUrl('/viewjournal');
         },
         (err) => {
-          console.warn(this.tradeformgroup?.value)
-          console.warn('Error naveen');
+          //console.warn(this.tradeformgroup?.value)
+          console.warn('Error');
         }
       );
     }
