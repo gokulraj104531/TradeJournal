@@ -1,31 +1,35 @@
 import { Component, NgZoneOptions, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Journal } from 'src/models/Journal';
 import { HttpservicesService } from 'src/services/httpservices.service';
 
 @Component({
   selector: 'app-viewjournal',
   templateUrl: './viewjournal.component.html',
-  styleUrls: ['./viewjournal.component.css']
+  styleUrls: ['./viewjournal.component.css'],
 })
-export class ViewjournalComponent{
-trade:any;
-nameid:any;
+export class ViewjournalComponent {
+  trade: any;
+  nameid: any;
+  EditId: any;
   tradearray: Journal[] = [];
-  constructor(private tradeservice: HttpservicesService) {
-    this.nameid=sessionStorage.getItem("UserName")
-   this.tradeservice.GetTrade(this.nameid).subscribe((data)=>
-    {
-      this.trade=data
-      console.log(this.trade)
+  constructor(
+    private tradeservice: HttpservicesService,
+    private router: Router
+  ) {
+    this.nameid = sessionStorage.getItem('UserName');
+    this.tradeservice.GetTrade(this.nameid).subscribe((data) => {
+      this.trade = data;
+      // console.log(this.trade)
     });
-   
-    // gettrade(){
-    //   this.tradeservice.GetTrade().subscribe((response) => {
-    //     console.log(response);
-    //     this.tradearray = response;
-    //   })
-    // }
   }
 
-  
+  // click(trade:any)
+  // {
+  //   var journalidedit=trade.journalId;
+  //   sessionStorage.setItem("EditId",journalidedit);
+  //   // var sess=sessionStorage.getItem("EditId");
+  //   // console.log(sess)
+  //  this.router.navigate(["/addjournal"]);
+  // }
 }

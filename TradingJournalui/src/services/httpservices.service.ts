@@ -9,6 +9,8 @@ import { Token } from '@angular/compiler';
 })
 export class HttpservicesService {
   name:any;
+   editid:any=sessionStorage.getItem("EditId");
+
   constructor(private httpclient:HttpClient) {
    
   }
@@ -29,9 +31,21 @@ export class HttpservicesService {
 
   //Addtrade
   AddTrade(trade:Journal):Observable<Journal>{
-    console.warn(trade)
+    //console.warn(trade)
     return this.httpclient.post<Journal>(this.baseurl+"api/Journal/AddTrade",trade);
   }
+
+
+  //edittrade
+  EditTrade(trade:Journal):Observable<any>{
+    return this.httpclient.put(this.baseurl+"api/Journal/EditTrade",trade);
+  }
+
+  //getjournalbyid
+  GetJournalById(journalId:any):Observable<any>{
+    return this.httpclient.get(this.baseurl+"api/Journal/GetTradeDetailsByID/"+journalId);
+  }
+
 
   //get trade details
   GetTrade(nameid:string){

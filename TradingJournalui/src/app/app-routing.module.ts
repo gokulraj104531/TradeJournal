@@ -19,7 +19,7 @@ const routes: Routes = [
   {path:'dashboard',component:DashboardComponent,canActivate:[AuthClassGuard]},
   {path:"charts",component:ChartsComponent,canActivate:[AuthClassGuard]},
   {path:'calendar',component:CalendarComponent,canActivate:[AuthClassGuard]},
-  {path:"addjournal",component:AddjournalComponent,canActivate:[AuthClassGuard]},
+  {path:'addjournal/:journalId',component:AddjournalComponent,canActivate:[AuthClassGuard]},
   {path:"viewjournal",component:ViewjournalComponent,canActivate:[AuthClassGuard]},
   {path:"addjournal",component:AddjournalComponent,canActivate:[AuthClassGuard]}
 ];
