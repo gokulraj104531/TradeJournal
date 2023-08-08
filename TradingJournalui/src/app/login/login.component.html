@@ -1,0 +1,32 @@
+<div class="container-fluid cont">
+    <div class="layout">
+        <div class="left">
+            <div class="form-layout">
+                <div class="form-container">
+                    <div class="logo"></div>
+                    <div class="title">
+                        <h1>Login</h1>
+                    </div>
+                    <div class="form" [formGroup]="loginformgroup">
+                        <div class="username">
+                            <input type="text" placeholder="Username" formControlName="UserName">
+                            <div class="text-danger" *ngIf="loginformgroup.get('UserName')!.invalid && loginformgroup.get('UserName')!.touched"><small>*Username is required.</small></div>
+                        </div>
+                       <div class="password">
+                        <input type="password" placeholder="Password" formControlName="Password">
+                        <div  class="text-danger" *ngIf="loginformgroup.get('Password')!.invalid && loginformgroup.get('Password')!.touched"><small>*Password is required.</small></div>
+                       </div>
+                        <button class="form-button" type="submit" [disabled]="loginformgroup.invalid"   (click)="onlogin()">Login</button>
+                        <div class="signup-link">
+                        <p>Don't you have an account ?<a routerLink="/register">Signup!</a></p>
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="right">
+        </div>
+    </div>
+</div>
+

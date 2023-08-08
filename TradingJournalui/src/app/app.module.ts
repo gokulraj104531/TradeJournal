@@ -1,33 +1,52 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './components/header/header.component';
 import { AuthInterceptor } from 'src/services/auth.interceptor';
-import { ComponentModuleModule } from './components/component-module.module';
+import { LayoutModule } from './layouts/layout.module';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { MainModule } from './main/main.module';
+import { LoginModule } from './login/login.module';
+import { SignupModule } from './signup/signup.module';
+import { ChartsModule } from './charts/charts.module';
+import { CalendarModule } from './calendar/calendar.module';
+import { AddjournalModule } from './addjournal/addjournal.module';
+import { ViewjournalModule } from './viewjournal/viewjournal.module';
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/main',
+    pathMatch: 'full',
+  },
+];
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    SignupComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ComponentModuleModule
+    LayoutModule,
+    MainModule,
+    LoginModule,
+    SignupModule,
+    ChartsModule,
+    CalendarModule,
+    AddjournalModule,
+    ViewjournalModule,
+    RouterModule.forRoot(routes),
   ],
-  providers: [{
-    provide:HTTP_INTERCEPTORS,
-    useClass:AuthInterceptor,
-    multi:true,
-  },
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
