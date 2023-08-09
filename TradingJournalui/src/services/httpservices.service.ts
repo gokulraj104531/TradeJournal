@@ -9,11 +9,8 @@ import { Token } from '@angular/compiler';
 })
 export class HttpservicesService {
   name:any;
-   editid:any=sessionStorage.getItem("EditId");
-
-  constructor(private httpclient:HttpClient) {
-   
-  }
+  constructor(private httpclient:HttpClient) { }
+  
   baseurl="https://localhost:7012/";
 
 
@@ -40,6 +37,12 @@ export class HttpservicesService {
   EditTrade(trade:Journal):Observable<any>{
     return this.httpclient.put(this.baseurl+"api/Journal/EditTrade",trade);
   }
+
+  //deletetrade
+  DeleteTrade(journalId:number):Observable<Journal>{
+    return this.httpclient.delete<Journal>(this.baseurl+"api/Journal/DeleteTrade/"+journalId);
+  }
+
 
   //getjournalbyid
   GetJournalById(journalId:any):Observable<any>{

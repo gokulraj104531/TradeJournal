@@ -8,7 +8,7 @@ import { HttpservicesService } from 'src/services/httpservices.service';
   templateUrl: './viewjournal.component.html',
   styleUrls: ['./viewjournal.component.css'],
 })
-export class ViewjournalComponent {
+export class ViewjournalComponent implements OnInit {
   trade: any;
   nameid: any;
   EditId: any;
@@ -18,11 +18,24 @@ export class ViewjournalComponent {
     private router: Router
   ) {
     this.nameid = sessionStorage.getItem('UserName');
+  }
+  ngOnInit(): void {
+    this.getTrades();
+  }
+
+  getTrades(){
     this.tradeservice.GetTrade(this.nameid).subscribe((data) => {
       this.trade = data;
       // console.log(this.trade)
     });
   }
+
+  DeleteTrade(journalId:number){
+    this.tradeservice.DeleteTrade(journalId).subscribe(response=>{
+      this.getTrades();
+    })
+  }
+
 
   // click(trade:any)
   // {

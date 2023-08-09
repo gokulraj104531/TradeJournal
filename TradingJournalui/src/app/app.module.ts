@@ -6,8 +6,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from 'src/services/auth.interceptor';
 import { LayoutModule } from './layouts/layout.module';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
 import { MainModule } from './main/main.module';
 import { LoginModule } from './login/login.module';
 import { SignupModule } from './signup/signup.module';

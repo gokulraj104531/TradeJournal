@@ -96,7 +96,7 @@ namespace TradingJournal.Controllers
         }
 
         [HttpDelete]
-        [Route("DelteTrade/{id}")]
+        [Route("DeleteTrade/{id}")]
         public void Delete(int id)
         {
             try
