@@ -8,7 +8,7 @@
         <table class="table">
           <thead>
             <th>StockName</th>
-            <th>OrderType</th>
+            <th>Type</th>
             <th>Quantity</th>
             <th>EntryPrice</th>
             <th>EntryTime</th>
@@ -22,7 +22,7 @@
               <td>{{ trades.stockName | uppercase }}</td>
               <td>{{ trades.orderType }}</td>
               <td>{{ trades.quantity }}</td>
-              <td>{{ trades.entryPrice|currency:'INR' }}</td>
+              <td>{{ trades.entryPrice |currency:'INR' }}</td>
               <td>{{ trades.entryTime | date : "dd/MM/yyyy" }}</td>
               <td>{{ trades.closePrice |currency:'INR'}}</td>
               <td>{{ trades.closeTime | date : "dd/MM/yyyy" }}</td>

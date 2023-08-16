@@ -16,7 +16,7 @@ tradecount: any;
     this.name = sessionStorage.getItem('UserName');
     this.tradeservice.GetProfitCount(this.name).subscribe((data) => {
       this.trade = data;
-      console.log(data);
+      //console.log(data);
     });
 
     this.tradeservice.GetTradeCount(this.name).subscribe((data)=>{

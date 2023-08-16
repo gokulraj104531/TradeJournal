@@ -13,17 +13,19 @@ import { ChartsModule } from './charts/charts.module';
 import { CalendarModule } from './calendar/calendar.module';
 import { AddjournalModule } from './addjournal/addjournal.module';
 import { ViewjournalModule } from './viewjournal/viewjournal.module';
+import { PagenotfoundComponent } from './layouts/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: '/main',
+    path: '**',
     pathMatch: 'full',
+    component:PagenotfoundComponent
   },
+
 ];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PagenotfoundComponent],
   imports: [
     BrowserModule,
     ReactiveFormsModule,

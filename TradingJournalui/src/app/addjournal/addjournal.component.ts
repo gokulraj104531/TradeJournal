@@ -43,7 +43,7 @@ export class AddjournalComponent implements OnInit {
       this.tradeservice.GetJournalById(paramsvalue).subscribe((response) => {
         let data = response;
         let dataedit = data[0];
-        console.log('resp:', dataedit);
+        //console.log('resp:', dataedit);
 
         if (response != null) {
           this.tradeformgroup?.setValue({
