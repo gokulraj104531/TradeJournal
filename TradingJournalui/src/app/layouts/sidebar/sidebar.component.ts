@@ -11,7 +11,7 @@ constructor (private router:Router)
 {
   this.name=sessionStorage.getItem("UserName");
 }
-LogOut(){
+logOut(){
   sessionStorage.removeItem("UserName");
   localStorage.removeItem('authtoken');
   this.router.navigateByUrl("/login");

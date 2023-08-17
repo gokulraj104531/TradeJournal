@@ -37,7 +37,9 @@
     left: 65px;
 
 }
-
+.password{
+    font-size: 10px;
+}
 .form-container {
     height: 500px;
     width: 450px;

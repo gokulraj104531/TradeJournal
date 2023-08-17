@@ -22,7 +22,7 @@ export class SignupComponent {
       UserName:new FormControl ('',Validators.required),
       Name: new FormControl ('',Validators.required),
       Email:new FormControl ('',[Validators.required,Validators.email]),
-      Password:new FormControl ('',[Validators.required,Validators.minLength(8)]),
+      Password:new FormControl ('',[Validators.required,Validators.minLength(8),Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)]),
       PhoneNumber: new FormControl ('',Validators.required),
     });
   }

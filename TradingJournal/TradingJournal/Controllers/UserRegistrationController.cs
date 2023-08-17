@@ -48,7 +48,7 @@ namespace TradingJournal.Controllers
         public IActionResult Authenticate(string User,string Pass)
         {
             if (_services.LoginServices(User,Pass) != null) {
-                //return StatusCode(200, "Authenticated user!");
+               
               var result = _services.GenerateToken(User);
                 return Ok(result);
             }
@@ -67,11 +67,11 @@ namespace TradingJournal.Controllers
             try
             {
                 _services.AddServices(userRegistrationDTO);
-               // return StatusCode(200, userRegistrationDTO);
+               
             }
             catch (Exception)
             {
-               // return StatusCode(500, ex.Message);
+                throw; 
             }   
         }
 
@@ -85,7 +85,7 @@ namespace TradingJournal.Controllers
             catch (Exception )
             {
                 throw;
-                //return NoContent();
+                
 
             }
         }

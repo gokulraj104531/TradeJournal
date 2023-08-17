@@ -25,7 +25,7 @@ namespace TradingJournal.Controllers
             try
             {
                 journalServices.AddTradeServices(journalDTO);
-                // return StatusCode(200, journalDTO);
+               
             }
             catch (Exception)
             {

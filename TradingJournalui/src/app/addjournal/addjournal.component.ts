@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { Journal } from 'src/models/Journal';
 import { HttpservicesService } from 'src/services/httpservices.service';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-addjournal',
@@ -18,7 +19,9 @@ import { ActivatedRoute } from '@angular/router';
 export class AddjournalComponent implements OnInit {
   tradearray: Journal[] = [];
   tradeformgroup?: FormGroup;
-  name: any;
+  name:string|null;
+  editService!: Subscription;
+  addService!: Subscription;
 
   constructor(
     private tradeservice: HttpservicesService,
@@ -32,7 +35,7 @@ export class AddjournalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("value" , this.arouter.snapshot.params['journalId']);
+    console.log('value1', this.arouter.snapshot.params['journalId']);
     this.initForm();
   }
 
@@ -43,8 +46,6 @@ export class AddjournalComponent implements OnInit {
       this.tradeservice.GetJournalById(paramsvalue).subscribe((response) => {
         let data = response;
         let dataedit = data[0];
-        //console.log('resp:', dataedit);
-
         if (response != null) {
           this.tradeformgroup?.setValue({
             journalId: dataedit.journalId,
@@ -61,9 +62,8 @@ export class AddjournalComponent implements OnInit {
           });
         }
       });
-      console.log('value:', this.tradeformgroup?.value);
     } else {
-      console.log('Editid is null');
+      alert('Editid is null');
     }
   }
 
@@ -84,13 +84,9 @@ export class AddjournalComponent implements OnInit {
   }
 
   onSubmit() {
-    
-    if (
-      // this.tradeformgroup?.value.journalId != null &&
-      this.tradeformgroup?.value.journalId != 0
-    ) {
+    if (this.tradeformgroup?.value.journalId != 0) {
       console.log(this.tradeformgroup?.value.journalId);
-      this.tradeservice
+      this.editService = this.tradeservice
         .EditTrade(this.tradeformgroup?.value)
         .subscribe((response) => {
           this.tradeformgroup?.setValue({
@@ -109,29 +105,30 @@ export class AddjournalComponent implements OnInit {
           this.route.navigateByUrl('/viewjournal');
         });
     } else {
-      this.tradeservice.AddTrade(this.tradeformgroup?.value).subscribe(
-        (response) => {
-          console.log(response);
-          this.tradeformgroup?.setValue({
-            journalId: '',
-            UserName: '',
-            StockName: '',
-            OrderType: '',
-            Quantity: '',
-            EntryPrice: '',
-            EntryTime: '',
-            ClosePrice: '',
-            CloseTime: '',
-            ProfitorLoss: '',
-            JournalTrade: '',
-          });
-          this.route.navigateByUrl('/viewjournal');
-        },
-        (err) => {
-          //console.warn(this.tradeformgroup?.value)
-          console.warn('Error');
-        }
-      );
+      this.addService = this.tradeservice
+        .AddTrade(this.tradeformgroup?.value)
+        .subscribe(
+          (response) => {
+            console.log(response);
+            this.tradeformgroup?.setValue({
+              journalId: '',
+              UserName: '',
+              StockName: '',
+              OrderType: '',
+              Quantity: '',
+              EntryPrice: '',
+              EntryTime: '',
+              ClosePrice: '',
+              CloseTime: '',
+              ProfitorLoss: '',
+              JournalTrade: '',
+            });
+            this.route.navigateByUrl('/viewjournal');
+          },
+          (err) => {
+            console.warn('Error');
+          }
+        );
     }
   }
 }

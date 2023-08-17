@@ -28,8 +28,10 @@
                             <div class="password">
                                 <input type="password" placeholder="Password" formControlName="Password" >
                                 <br>
-                                <span class="text-danger" *ngIf="(Userformgroup.get('Password')!.invalid && Userformgroup.get('Password')!.touched)"><small>Required</small></span>
-                            </div>
+                                <span class="text-danger" *ngIf="(Userformgroup.get('Password')!.invalid && Userformgroup.get('Password')!.touched)"><small>Required </small></span>
+                                <span class="text-danger password" *ngIf="(Userformgroup.get('Password')!.hasError('pattern') || Userformgroup.get('Password')!.errors) && Userformgroup.get('Password')!.touched">Msut contain symbols and characters Password should be 8 characters</span>
+                               
+                                </div>
                             <div class="PhoneNumber">
                                 <input type="text" placeholder="Mobile No." formControlName="PhoneNumber">
                                 <br>

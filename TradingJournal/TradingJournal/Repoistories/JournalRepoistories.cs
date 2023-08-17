@@ -27,18 +27,6 @@ namespace TradingJournal.Repoistories
             }
         }
 
-        //public void UpdateTrade(Journal journal) {
-        //    try
-        //    {
-        //        _dbcontext.journals.Update(journal);
-        //        _dbcontext.SaveChanges();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //}
-
         public void DeleteTrade(int id)
         {
             try
@@ -60,19 +48,6 @@ namespace TradingJournal.Repoistories
                 throw;
             }
         }
-
-        //public List<Journal> GetJournals()
-        //{
-        //    try
-        //    {
-        //        List<Journal> journals = _dbcontext.journals.ToList();
-        //        return journals;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //}
 
 
         public List<Journal> GetJournalbyUserName(string userName)

@@ -28,7 +28,6 @@ export class HttpservicesService {
 
   //Addtrade
   AddTrade(trade:Journal):Observable<Journal>{
-    //console.warn(trade)
     return this.httpclient.post<Journal>(this.baseurl+"api/Journal/AddTrade",trade);
   }
 

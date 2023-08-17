@@ -15,6 +15,7 @@
                        <div class="password">
                         <input type="password" placeholder="Password" formControlName="Password">
                         <div  class="text-danger" *ngIf="loginformgroup.get('Password')!.invalid && loginformgroup.get('Password')!.touched"><small>*Password is required.</small></div>
+                        <span class="text-danger" *ngIf="loginformgroup.get('Password')!.errors && loginformgroup.get('Password')!.touched"><small>Password should be 8 characters</small></span>
                        </div>
                         <button class="form-button" type="submit" [disabled]="loginformgroup.invalid"   (click)="onlogin()">Login</button>
                         <div class="signup-link">

@@ -26,23 +26,12 @@ export class ViewjournalComponent implements OnInit {
   getTrades(){
     this.tradeservice.GetTrade(this.nameid).subscribe((data) => {
       this.trade = data;
-      // console.log(this.trade)
     });
   }
 
   DeleteTrade(journalId:number){
     this.tradeservice.DeleteTrade(journalId).subscribe(response=>{
       this.getTrades();
-    })
+    });
   }
-
-
-  // click(trade:any)
-  // {
-  //   var journalidedit=trade.journalId;
-  //   sessionStorage.setItem("EditId",journalidedit);
-  //   // var sess=sessionStorage.getItem("EditId");
-  //   // console.log(sess)
-  //  this.router.navigate(["/addjournal"]);
-  // }
 }

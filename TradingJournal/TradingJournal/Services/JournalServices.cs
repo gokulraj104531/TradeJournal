@@ -26,7 +26,6 @@ namespace TradingJournal.Services
             {
                 Journal journal = _mapper.Map<Journal>(journalDTO);
                 journalRepoistories.AddTrade(journal);
-                //_unitofwork.JournalRepoistories.Adds(journal);
             }
             catch (Exception)
             {
@@ -137,7 +136,7 @@ namespace TradingJournal.Services
             try
             {
                 var UserProfit = journalRepoistories.GetJournalbyUserName(userName).Sum(x => x.ProfitorLoss);
-                double ProfitPercent = ((double)UserProfit / 10000) * 100;
+                double ProfitPercent = (double)UserProfit / 10000 * 100;
                 return (int)ProfitPercent;
             }
             catch (Exception)
@@ -151,8 +150,8 @@ namespace TradingJournal.Services
         {
             try
             {
-                var userdata = journalRepoistories.GetJournalbyUserName(userName);
-                List<ProfitorLossDTO> profitorLossDTOs =_mapper.Map<List<ProfitorLossDTO>>(userdata);
+                var userData = journalRepoistories.GetJournalbyUserName(userName);
+                List<ProfitorLossDTO> profitorLossDTOs =_mapper.Map<List<ProfitorLossDTO>>(userData);
                 return profitorLossDTOs;
             }
             catch (Exception)
