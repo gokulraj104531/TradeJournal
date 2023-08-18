@@ -25,7 +25,7 @@ namespace TradingJournal.Controllers
             try
             {
                 journalServices.AddTradeServices(journalDTO);
-                // return StatusCode(200, journalDTO);
+               
             }
             catch (Exception)
             {
@@ -96,7 +96,7 @@ namespace TradingJournal.Controllers
         }
 
         [HttpDelete]
-        [Route("DelteTrade/{id}")]
+        [Route("DeleteTrade/{id}")]
         public void Delete(int id)
         {
             try

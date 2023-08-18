@@ -17,14 +17,10 @@ namespace TradingJournal.Services
         private readonly IUserRegistrationRepoistories userRegistrationRepoistories;
         private readonly IMapper _mapper;
         public IUnitofWork _unitofWork;
-        //public IGenericRepository<UserRegistration> _genericRepository;
-        public UserRegistrationServices(IUserRegistrationRepoistories userRegistrationRepoistories, IMapper mapper, IUnitofWork unitofWork /* IGenericRepository<UserRegistration> genericRepository*/)
-        {
+        public UserRegistrationServices(IUserRegistrationRepoistories userRegistrationRepoistories, IMapper mapper, IUnitofWork unitofWork) { 
             this.userRegistrationRepoistories = userRegistrationRepoistories;
             _mapper = mapper;
             _unitofWork = unitofWork;
-            //_genericRepository = genericRepository;
-
         }
 
         public UserRegistrationDTO LoginServices(LoginModel loginModel)
@@ -42,7 +38,6 @@ namespace TradingJournal.Services
             {
                 UserRegistration userRegistration=_mapper.Map<UserRegistration>(userRegistrationDTO);
                 userRegistrationRepoistories.AddUser(userRegistration);
-                //_unitofWork.UserRegistrationRepoistories.Adds(userRegistration);
             }
             catch (Exception)
             {
@@ -82,8 +77,6 @@ namespace TradingJournal.Services
         {
             try
             {
-                //var geUserEntity = _genericRepository.GetEntities<UserRegistration>().FirstOrDefault(x => x.UserName == username);
-                //_genericRepository.Deletes(geUserEntity);
                 userRegistrationRepoistories.DeleteUser(username);
             }
             catch (Exception)
@@ -108,21 +101,6 @@ namespace TradingJournal.Services
                 throw;
             }
         }
-
-        //public UserRegistration GetUserName(string userName,string Password)
-        //{
-        //    try
-        //    {
-        //        userRegistrationRepoistories.GetUserByName(userName);
-        //        return 
-
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //}
 
         public string GenerateToken(string username)
         {
@@ -168,8 +146,6 @@ namespace TradingJournal.Services
                     ValidAudience = "http://localhost:4200",
                     IssuerSigningKey = key
                 }, out var validatedToken);
-
-
 
                 return true;
             }

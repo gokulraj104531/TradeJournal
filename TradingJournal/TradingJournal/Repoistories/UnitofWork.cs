@@ -41,9 +41,6 @@ namespace TradingJournal.Repoistories
             _context.SaveChanges();
         }
 
-        public void Update()
-        {
-            _context.SaveChanges();
-        }
+       
     }
 }

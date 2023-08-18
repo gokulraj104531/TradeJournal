@@ -9,6 +9,8 @@ import { Route } from '@angular/router';
 })
 
 export class AuthClassGuard implements CanActivate {
+
+  constructor(private route:Router){}
  
   namme=sessionStorage.getItem("UserName");
  
@@ -16,8 +18,9 @@ export class AuthClassGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if(this.namme==null){
+        this.route.navigateByUrl("/login");
         return false;
-        // this.router.navigateByUrl("/dashboard");
+       
       }
       else{
         return true;
