@@ -7,14 +7,11 @@
         <div class="form">
             <div class="row d-flex ">
                 <div class="col-sm-6">
-                    <!-- <input type="text" placeholder="Stock Name" formControlName="journalId" hidden/> -->
-                    <!-- <input type="text" placeholder="Stock Name" formControlName="UserName" hidden /> -->
                     <input type="text" placeholder="Stock Name" formControlName="StockName" />
                     <br>
                     <span class="text-danger" *ngIf="(tradeformgroup?.get('StockName')!.invalid && tradeformgroup?.get('StockName')!.touched)"><small>*Stock Name Required</small></span>
                 </div>
                 <div class="col-sm-6">
-                    <!-- <input type="text" placeholder="order type" /> -->
                     <select value="OrderType" class="select" formControlName="OrderType">
                         <option value="" hidden selected>Order Type</option>
                         <option value="Long">Long</option>
@@ -64,9 +61,9 @@
                     <button class="btn btn-success" >Submit</button>
                 </div>
             </div>
-            
         </div>
     </form>
     </div>
 </div>
+
 
