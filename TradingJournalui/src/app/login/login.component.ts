@@ -47,7 +47,7 @@ export class LoginComponent  {
           );
           localStorage.setItem('authtoken', token);
           if (token == null) {
-            alert(' Either Your Username or Password are wrong');
+            alert(' Either Your Username or Password is wrong');
           } else {
             this.router.navigateByUrl('/main');
           }

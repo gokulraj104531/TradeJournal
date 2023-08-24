@@ -84,7 +84,9 @@ export class HttpservicesService {
   }
 
   //linechart
-  Linechart(name: string):Observable<ProfitorLoss[]>{
-    return this.httpclient.get<ProfitorLoss[]>(this.baseurl + 'api/Journal/LineChart/' + name);
+  Linechart(name: string): Observable<ProfitorLoss[]> {
+    return this.httpclient.get<ProfitorLoss[]>(
+      this.baseurl + 'api/Journal/LineChart/' + name
+    );
   }
 }
