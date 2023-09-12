@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { Subscription } from 'rxjs';
+import { ProfitorLoss } from 'src/models/ProfitorLoss';
 import { HttpservicesService } from 'src/services/httpservices.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { HttpservicesService } from 'src/services/httpservices.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
-export class MainComponent implements AfterViewInit, OnDestroy {
+export class MainComponent implements  OnDestroy,OnInit{
   trade: any;
   name: any;
   percent: any;
@@ -16,6 +17,34 @@ export class MainComponent implements AfterViewInit, OnDestroy {
   profitCount!: Subscription;
   tradeCount!: Subscription;
   profitPercent!: Subscription;
+  public lineChartLabels: string[] = [];
+  public lineChartData: any[] = [{ data: [], label: 'Profits/Losses' ,borderColor: 'blue', pointBackgroundColor: []}];
+  public lineChartOptions: any = {
+    responsive: true,
+    // scales: {
+    //   x: [{
+    //     ticks: {
+    //       display: true,
+    //     },
+    //   }],
+    //   y: [{
+    //     ticks: {
+    //       beginAtZero: true,
+    //     },
+    //   }],
+    // },
+    // plugins: {
+    //   legend: {
+    //     position: 'top',
+    //   },
+    // },
+    // chart: {
+    //   type: 'line',
+    // },
+  };
+
+
+  public lineChartType = 'line'; 
   constructor(private tradeservice: HttpservicesService) {
     this.name = sessionStorage.getItem('UserName');
     this.profitCount = this.tradeservice
@@ -36,37 +65,18 @@ export class MainComponent implements AfterViewInit, OnDestroy {
         this.percent = data;
       });
   }
+  ngOnInit(){
+   
+    this.tradeservice.Linechart(this.name).subscribe((response:ProfitorLoss[]) => {
+      const profitorLossData: number[] = response.map(item => item.profitorLoss);
+      this.lineChartLabels = profitorLossData.map((_, index) => `${index + 1}`);
+      this.lineChartData[0].data = profitorLossData;
+    });
+  }
   ngOnDestroy(): void {
     this.tradeCount.unsubscribe();
     this.profitPercent.unsubscribe();
     this.profitCount.unsubscribe();
   }
-  ngAfterViewInit(): void {
-    this.createChart();
-  }
-  createChart() {
-    const ctx = document.getElementById('myChart') as HTMLCanvasElement;
-    const myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-        datasets: [
-          {
-            label: 'My Dataset',
-            data: [10, 20, 30, 40, 50, 60],
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1,
-          },
-        ],
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
-      },
-    });
-  }
+  
 }

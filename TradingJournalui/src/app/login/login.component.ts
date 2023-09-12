@@ -47,7 +47,7 @@ export class LoginComponent  {
           );
           localStorage.setItem('authtoken', token);
           if (token == null) {
-            alert(' You should create an account');
+            alert(' Either Your Username or Password is wrong');
           } else {
             this.router.navigateByUrl('/main');
           }

@@ -1,35 +1,36 @@
-
-table{
-    font-size: small;
+table {
+  font-size: small;
 }
 .layout {
-    height: 115vh;
-    width: 77%;
-    position: absolute;
-    top: 15%;
-    right: 15px;
-    background-color: aliceblue;
-    border-radius: 15px;
-    border: 1px solid black;
+  height: 115vh;
+  width: 77%;
+  position: absolute;
+  top: 15%;
+  right: 15px;
+  background-color: aliceblue;
+  border-radius: 15px;
+  border: 1px solid black;
 }
 .heading {
-    margin-top: 25px;
-    margin-left: 35px;
-    margin-bottom: 15px;
+  margin-top: 25px;
+  margin-left: 35px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.view{
-    height: auto;
-    width: 96%;
-    position:absolute;
-    right: 10px;
-
-   
+.view {
+  height: auto;
+  width: 96%;
+  position: absolute;
+  right: 10px;
 }
 
-table{
-     background-color:transparent;
+table {
+  background-color: transparent;
 }
-tbody td{
-    background-color:transparent;
+tbody td {
+  background-color: transparent;
 }

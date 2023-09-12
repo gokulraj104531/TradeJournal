@@ -102,6 +102,7 @@ namespace TradingJournal.Services
             }
         }
 
+
         public string GenerateToken(string username)
         {
             byte[] keyBytes = new byte[32]; 

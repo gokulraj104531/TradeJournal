@@ -34,6 +34,7 @@ export class ChartsComponent implements OnInit {
         'OANDA:NZDJPY',
         'OANDA:CADJPY',
         'OANDA:AUDJPY',
+        
       ],
       details: true,
       calendar: false,

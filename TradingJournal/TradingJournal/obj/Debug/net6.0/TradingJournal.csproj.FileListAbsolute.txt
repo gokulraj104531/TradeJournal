@@ -393,3 +393,9 @@ D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\bin\Debug\net6.0\ru
 D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\bin\Debug\net6.0\PdfSharpCore.dll
+D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\bin\Debug\net6.0\HtmlRenderer.Core.dll
+D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\bin\Debug\net6.0\HtmlRenderer.PdfSharp.Core.dll
+D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\bin\Debug\net6.0\SixLabors.Core.dll
+D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\bin\Debug\net6.0\SixLabors.Fonts.dll
+D:\TradingJournal\TradeJournal\TradingJournal\TradingJournal\bin\Debug\net6.0\SixLabors.ImageSharp.dll

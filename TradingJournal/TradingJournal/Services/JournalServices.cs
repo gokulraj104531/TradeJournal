@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using TradingJournal.Data;
 using TradingJournal.DTO;
 using TradingJournal.Models;
-using TradingJournal.Repoistories;
 using TradingJournal.Repoistories.Interfaces;
 using TradingJournal.Services.Interfaces;
 
