@@ -14,7 +14,7 @@ import { CalendarModule } from './calendar/calendar.module';
 import { AddjournalModule } from './addjournal/addjournal.module';
 import { ViewjournalModule } from './viewjournal/viewjournal.module';
 import { PagenotfoundComponent } from './layouts/pagenotfound/pagenotfound.component';
-import { NgChartsModule } from 'ng2-charts';
+
 const routes: Routes = [
   {
     path: '**',

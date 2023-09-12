@@ -2,6 +2,8 @@ import { Component, NgZoneOptions, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Journal } from 'src/models/Journal';
 import { HttpservicesService } from 'src/services/httpservices.service';
+import * as FileSaver from 'file-saver';
+
 
 @Component({
   selector: 'app-viewjournal',
@@ -34,4 +36,19 @@ export class ViewjournalComponent implements OnInit {
       this.getTrades();
     });
   }
+
+  
+  generatePDF(name: string) {
+    this.tradeservice.GeneratePdf(name).subscribe(
+      (data: Blob) => {
+        const blob = new Blob([data], { type: 'application/pdf' });
+        FileSaver.saveAs(blob, 'Trading_Journal_' + name + '.pdf');
+      },
+      (error) => {
+        console.error('Error generating PDF:', error);
+      }
+    );
+  }
+
+
 }

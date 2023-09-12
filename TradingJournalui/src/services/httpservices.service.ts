@@ -89,4 +89,11 @@ export class HttpservicesService {
       this.baseurl + 'api/Journal/LineChart/' + name
     );
   }
+
+  GeneratePdf(name: string): Observable<any> {
+    return this.httpclient.get(
+      this.baseurl + 'api/Journal/GeneratePdf/' + name,
+      { responseType: 'blob' }
+    );
+  }
 }

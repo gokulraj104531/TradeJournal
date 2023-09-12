@@ -14,6 +14,6 @@ namespace TradingJournal.Services.Interfaces
         int TradeCount(string userName);
         int ProfitPercent(string userName);
         List<ProfitorLossDTO> LineChart(string userName);
-
+        
     }
 }

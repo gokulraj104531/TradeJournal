@@ -52,7 +52,7 @@ namespace TradingJournal.Repoistories
 
         public List<Journal> GetJournalbyUserName(string userName)
         {
-           return _dbcontext.journals.Where(x=>x.UserName == userName).ToList();
+           return _dbcontext.journals.Where(x=>x.UserName == userName).OrderByDescending(x=>x.EntryTime).ToList();
         }
 
         public List<Journal> GetJournalByid(int id)

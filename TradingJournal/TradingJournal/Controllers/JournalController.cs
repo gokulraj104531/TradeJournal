@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TheArtOfDev.HtmlRenderer.PdfSharp;
 using TradingJournal.DTO;
 using TradingJournal.Models;
 using TradingJournal.Services;
 using TradingJournal.Services.Interfaces;
+using PdfSharpCore;
+using PdfSharpCore.Pdf;
+using TheArtOfDev.HtmlRenderer.PdfSharp;
 
 namespace TradingJournal.Controllers
 {
@@ -169,5 +173,75 @@ namespace TradingJournal.Controllers
                 throw;
             }
         }
+
+
+        [HttpGet("GeneratePdf/{UserName}")]
+        public IActionResult GeneratePDF(string UserName)
+        {
+            var document = new PdfDocument();
+            List<JournalDTO> journalEntries = journalServices.GetJournalDTOs(UserName);
+
+            string htmlcontent = "<div style='width:100%; text-align:center'>";
+            htmlcontent += "<h1>Trading Journal</h1>";
+
+            if (journalEntries != null && journalEntries.Count > 0)
+            {
+                htmlcontent += "<table style='width:100%; border-collapse: collapse;'>";
+                htmlcontent += "<tr><th colspan='9' style='border: 1px solid black;'>Journal Entries</th></tr>";
+                htmlcontent += "<tr><th style='border: 1px solid black;'>Stock</th><th style='border: 1px solid black;'>Order Type</th><th style='border: 1px solid black;'>Quantity</th><th style='border: 1px solid black;'>Entry Price</th><th style='border: 1px solid black;'>Entry Time</th><th style='border: 1px solid black;'>Close Price</th><th style='border: 1px solid black;'>Close Time</th><th style='border: 1px solid black;'>Profit/Loss</th><th style='border: 1px solid black;'>Journal Trade</th></tr>";
+
+                foreach (var journalEntry in journalEntries)
+                {
+                    htmlcontent += "<tr>";
+                    htmlcontent += "<td style='border: 1px solid black;'>" + journalEntry.StockName + "</td>";
+                    htmlcontent += "<td style='border: 1px solid black;'>" + journalEntry.OrderType + "</td>";
+                    htmlcontent += "<td style='border: 1px solid black;'>" + journalEntry.Quantity + "</td>";
+                    htmlcontent += "<td style='border: 1px solid black;'>" + journalEntry.EntryPrice + "</td>";
+                    htmlcontent += "<td style='border: 1px solid black;'>" + journalEntry.EntryTime + "</td>";
+                    htmlcontent += "<td style='border: 1px solid black;'>" + journalEntry.ClosePrice + "</td>";
+                    htmlcontent += "<td style='border: 1px solid black;'>" + journalEntry.CloseTime + "</td>";
+
+                    if (journalEntry.ProfitorLoss.HasValue)
+                    {
+                        htmlcontent += "<td style='border: 1px solid black;'>" + journalEntry.ProfitorLoss + "</td>";
+                    }
+                    else
+                    {
+                        htmlcontent += "<td style='border: 1px solid black;'></td>";
+                    }
+
+                    if (!string.IsNullOrEmpty(journalEntry.JournalTrade))
+                    {
+                        htmlcontent += "<td style='border: 1px solid black;'>" + journalEntry.JournalTrade + "</td>";
+                    }
+                    else
+                    {
+                        htmlcontent += "<td style='border: 1px solid black;'></td>";
+                    }
+                    htmlcontent += "</tr>";
+                }
+                htmlcontent += "</table>";
+            }
+            else
+            {
+                htmlcontent += "<p>No journal entries found.</p>";
+            }
+
+            htmlcontent += "</div>";
+
+            PdfGenerator.AddPdfPages(document, htmlcontent, PageSize.A4);
+
+            byte[] response;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                document.Save(ms);
+                response = ms.ToArray();
+            }
+
+            string Filename = "Trading_journal_" + UserName + ".pdf";
+            return File(response, "application/pdf", Filename);
+        }
+
+
     }
 }
