@@ -22,10 +22,10 @@ export class HttpservicesService {
     );
   }
 
-  //Login page
-  Login(username: String, password: String): Observable<string> {
-    return this.httpclient.get(
-      this.baseurl + 'api/UserRegistration/Login/' + username + '/' + password,
+ 
+  Login(username: String, password: String): Observable<any> {
+    return this.httpclient.post(
+      this.baseurl + 'api/UserRegistration/Authenticate/' + username + '/' + password,
       {
         responseType: 'text',
       }
