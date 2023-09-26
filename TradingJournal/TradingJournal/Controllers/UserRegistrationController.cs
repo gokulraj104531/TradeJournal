@@ -20,13 +20,50 @@ namespace TradingJournal.Controllers
             this._services = services;
         }
 
+        //[HttpGet]
+        //[Route("Login/{User}/{Pass}")]
+        //public string? Login(string User,string Pass) { 
+        //    try
+        //    {
+        //        var validuser= _services.LoginServices(User, Pass);
+        //        if(validuser != null)
+        //        {
+        //            var result = _services.GenerateToken(User);
+        //            return result;
+        //        }
+        //        else
+        //        {
+        //            return null;
+        //        }
+
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
+
+        //[HttpPost("Authenticate")]
+        //public IActionResult Authenticate(string User,string Pass)
+        //{
+        //    if (_services.LoginServices(User,Pass) != null) {
+
+        //      var result = _services.GenerateToken(User);
+        //        return Ok(result);
+        //    }
+        //    else{
+        //        return StatusCode(400, "UnAuthenticated user!");
+        //    }
+        //}
         [HttpGet]
         [Route("Login/{User}/{Pass}")]
-        public string? Login(string User,string Pass) { 
+        public string? Login(string User, string Pass)
+        {
             try
             {
-                var validuser= _services.LoginServices(User, Pass);
-                if(validuser != null)
+                var validuser = _services.LoginServices(User, Pass);
+                if (validuser != null)
                 {
                     var result = _services.GenerateToken(User);
                     return result;
@@ -35,7 +72,7 @@ namespace TradingJournal.Controllers
                 {
                     return null;
                 }
-                
+
             }
             catch (Exception)
             {
@@ -45,18 +82,19 @@ namespace TradingJournal.Controllers
         }
 
         [HttpPost("Authenticate")]
-        public IActionResult Authenticate(string User,string Pass)
+        public IActionResult Authenticate(string User, string Pass)
         {
-            if (_services.LoginServices(User,Pass) != null) {
-               
-              var result = _services.GenerateToken(User);
+            if (_services.LoginServices(User, Pass) != null)
+            {
+
+                var result = _services.GenerateToken(User);
                 return Ok(result);
             }
-            else{
+            else
+            {
                 return StatusCode(400, "UnAuthenticated user!");
             }
         }
-
 
 
 
