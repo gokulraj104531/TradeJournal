@@ -23,8 +23,8 @@ export class HttpservicesService {
   }
 
  
-  Login(username: String, password: String): Observable<any> {
-    return this.httpclient.post(
+  Login(username: String, password: String): Observable<JSON["parse"]> {
+    return this.httpclient.post<JSON["parse"]>(
       this.baseurl + 'api/UserRegistration/Authenticate/' + username + '/' + password,
       {
         responseType: 'text',

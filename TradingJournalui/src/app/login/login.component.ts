@@ -16,10 +16,10 @@ import { Subscription } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent  {
+export class LoginComponent {
   loginarray: UserRegisteration[] = [];
   loginformgroup!: FormGroup;
-  login!:Subscription;
+  login!: Subscription;
 
   constructor(
     private loginservice: HttpservicesService,
@@ -28,19 +28,21 @@ export class LoginComponent  {
   ) {
     this.loginformgroup = this.log.group({
       UserName: new FormControl('', Validators.required),
-      Password: new FormControl('', [Validators.required,Validators.minLength(8)]),
+      Password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
     });
   }
 
-
   onlogin() {
-  this.login=  this.loginservice
+    this.login = this.loginservice
       .Login(
         this.loginformgroup.value.UserName,
         this.loginformgroup.value.Password
       )
       .subscribe(
-        (token: string) => {
+        (token: any) => {
           sessionStorage.setItem(
             'UserName',
             this.loginformgroup.value.UserName

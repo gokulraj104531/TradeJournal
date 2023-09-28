@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics.Eventing.Reader;
 using System.Reflection.Metadata.Ecma335;
 using TradingJournal.DTO;
@@ -81,14 +82,14 @@ namespace TradingJournal.Controllers
             }
         }
 
-        [HttpPost("Authenticate")]
+        [HttpPost("Authenticate/{User}/{Pass}")]
         public IActionResult Authenticate(string User, string Pass)
         {
             if (_services.LoginServices(User, Pass) != null)
             {
 
                 var result = _services.GenerateToken(User);
-                return Ok(result);
+                return Ok (JsonConvert.SerializeObject( (result)));
             }
             else
             {
